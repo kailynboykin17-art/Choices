@@ -1,0 +1,157 @@
+; ===== STORY: 2000s TEEN QUEEN =====
+; It's 2004. Flip phones, butterfly clips, MySpace Top 8.
+char mom    | Mom        | 8D5A3B,140E10,C9A8F0,FFFFFF,0,1,520
+char jade   | Jade       | 5A3622,140E10,F28CB9,FFE066,0,2,950
+char brooke | Brooke     | F1C9A5,E9C96B,FFFFFF,E86A9E,0,0,780
+char tyler  | Tyler      | C68E62,4A2A1C,7FB0E0,FFFFFF,0,1,420
+char maddie | Maddie     | F1C9A5,4A2A1C,FFE066,9FD89A,1,1,880
+
+#teen_start
+reset
+title 2000s Teen Queen | teen
+bond pop | popularity
+bg C9A8F0
+say me | It's 2004, I'm 16, and this is MY year. Probably.
+text Jade | GIRL wake up!!! 1st day of junior yr!! wat r u wearing??
+choice Pick your 1st day outfit!
+> Velour tracksuit + Uggs | outfit=2 pop+2 style+1 hearts+1 | teen_bus
+> Low-rise jeans + baby tee + butterfly clips | outfit=1 pop+1 style+2 hearts+1 | teen_bus
+> Graphic tee + Converse | outfit=1 pop+0 style+1 chill+1 | teen_bus
+> Your mom's pick (a turtleneck) | outfit=5 pop-1 | teen_mom_outfit
+#teen_mom_outfit
+say mom | You look so nice and WARM, sweetie!
+say me | I look like a substitute teacher.
+goto teen_bus
+
+#teen_bus
+bg F7B8D2
+say jade | Okay, the Brooke situation. She's having a huge party Friday and you're NOT on the list.
+say brooke | Oh. Hey. Cute clips. My little sister has those.
+choice Brooke is being shady...
+> Clap back: "Wow, does she also have your personality?" | pop+2 drama+2 hearts+1 | teen_clap
+> Ignore her, fix your lip gloss | pop+1 chill+2 hearts+1 | teen_class
+> Compliment her bag (keep the peace) | brooke+2 | teen_class
+#teen_clap
+say jade | OMG. You did NOT just say that. Iconic.
+say brooke | ...Watch yourself.
+goto teen_class
+
+#teen_class
+bg FFF4E0
+say tyler | Uh, hey. Is anyone sitting here? I'm Tyler. I'm new.
+choice The cute new boy wants to sit with you.
+> "Sure! I'm {name}." | tyler+2 hearts+1 | teen_tyler
+> Get flustered and drop your Gel pens | tyler+1 chaos+1 | teen_pens
+> "Sorry, saving it for Jade" | jade+1 tyler-1 | teen_lunch
+#teen_pens
+say me | Gel pens EVERYWHERE. Rolling under every desk. The whole class is watching.
+undo
+goto teen_tyler
+#teen_tyler
+say tyler | Cool. Do you, um, have MySpace?
+goto teen_lunch
+
+#teen_lunch
+bg C9A8F0
+say maddie | Hi! I'm Maddie, I run the yearbook club. We need a photographer. Please. We're desperate.
+choice After school plans?
+> Join yearbook with Maddie | maddie+2 hearts+2 | teen_yearbook
+> Mall with Jade | jade+2 pop+1 | teen_mall
+> Go home and update your MySpace | chill+1 | teen_myspace
+#teen_yearbook
+sticker yearbook
+say maddie | You're a natural! Look at this pic of the lunch lady! Art!
+goto teen_myspace
+#teen_mall
+say jade | Claw machine first. Then Claire's. Then Hot Topic. Then pretzel.
+claw
+goto teen_myspace
+
+#teen_myspace
+bg 1A1A2E
+say me | Time for the most important decision of my life. My MySpace Top 8.
+choice Who's #1 on your Top 8?
+> Jade (bestie loyalty) | jade+3 hearts+2 | teen_song
+> Tyler (bold move) | tyler+3 drama+1 | teen_song
+> Maddie (new friend) | maddie+2 hearts+1 | teen_song
+> Yourself (iconic) | pop+1 chaos+1 | teen_self
+#teen_self
+text Jade | ummm why am i not ur #1?? why r U ur #1??
+undo
+goto teen_song
+#teen_song
+choice Profile song?
+> Pop princess anthem | pop+1 hearts+1 | teen_friday
+> Emo rock ballad | chill+2 hearts+1 | teen_friday
+> Ringtone remix | pop+2 | teen_friday
+
+#teen_friday
+bg F7B8D2
+text Jade | brookes party is 2nite. we r NOT invited. sleepover at my place instead??
+choice Friday night!
+> Sleepover at Jade's | jade+2 happy+2 hearts+1 | teen_sleepover
+> Crash Brooke's party | pop+2 drama+2 chaos+1 | teen_crash
+> Yearbook photos at the football game | maddie+1 tyler+1 | teen_game
+#teen_crash
+say brooke | Um. Who invited you?? Security! My dad!
+say me | Brooke's dad is chasing me with a tray of pizza rolls. Not my finest moment.
+undo
+goto teen_end
+#teen_sleepover
+sticker sleepover_2004
+choice Sleepover activity!
+> Prank call boys on the house phone | drama+1 happy+2 | teen_end
+> Magazine love quiz | happy+1 hearts+1 | teen_end
+> Dance to music videos | happy+2 hearts+1 | teen_end
+#teen_game
+say tyler | You came! I scored a touchdown! Well... I held the water bottles. But still!
+goto teen_end
+
+; ---- endings ----
+#teen_end
+if chaos>=3 | teen_end_drama
+if tyler>=5 | teen_end_crush
+if jade>=6 | teen_end_bff
+if pop>=6 | teen_end_queen
+if maddie>=4 | teen_end_yearbook
+goto teen_end_normal
+#teen_end_drama
+bg D0D0D0
+say jade | Everyone's talking about you. Like, the BAD kind. Lay low for a while?
+ending good | Drama Queen | Your story, your ending.
+sticker drama_queen
+goto teen_after
+#teen_end_crush
+bg FFD6E8
+say tyler | So... wanna go to the homecoming dance with me?
+ending good | Homecoming | Your story, your ending.
+sticker homecoming
+set hearts+5
+goto teen_after
+#teen_end_bff
+bg F7B8D2
+say jade | BFFs forever. Like, FOREVER forever. Friendship necklace. Now.
+ending good | Bff Necklace | Your story, your ending.
+sticker bff_necklace
+set hearts+5
+goto teen_after
+#teen_end_queen
+bg FFE066
+say brooke | ...Fine. You can sit with us. Actually, you're kind of the main character now.
+ending good | Teen Queen | Your story, your ending.
+sticker teen_queen
+set hearts+6
+goto teen_after
+#teen_end_yearbook
+bg FFF4E0
+say maddie | Your photo made the yearbook COVER!
+ending good | Yearbook Cover | Your story, your ending.
+sticker yearbook_cover
+set hearts+5
+goto teen_after
+#teen_end_normal
+say me | Junior year... not bad. Sophomore me would be proud.
+ending ok | Not the End | Different choices, different ending.
+#teen_after
+save
+goto storyland

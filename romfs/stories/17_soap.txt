@@ -1,0 +1,74 @@
+; ===== STORY: Soap Opera Star =====
+
+char director | Director Vince | F1C9A5,4A2A1C,2B1B24,FFFFFF,1,1,380
+char diva | Veronica | F1C9A5,E86A9E,F28CB9,E8C050,0,0,700
+char costar | Ricky | C68E62,140E10,FFFFFF,FFFFFF,0,1,420
+
+#soap_start
+reset
+title Soap Opera Star | soap
+bond soap | the ratings
+bg E8C8F8
+say me | I got cast on 'Passions of Pine Valley'! My character has an evil twin. Obviously.
+say diva | I've been on this show for 20 years, darling. Don't get comfortable.
+say director | Okay! Dramatic slap scene in five!
+
+#soap_s0
+choice Your first big scene:
+> Go fully dramatic | soap+2 hearts+2 | soap_r00
+> Keep it subtle | soap+1 hearts+1 | soap_r01
+> Forget your lines | soap-1 chaos+1 | soap_r02
+#soap_r00
+say director | EMMY. MOMENT.
+goto soap_s1
+#soap_r01
+say costar | Nice and real.
+goto soap_s1
+#soap_r02
+say director | CUT! CUT!!
+undo
+goto soap_s1
+
+#soap_s1
+choice Veronica is jealous of your fan mail.
+> Ask her for acting advice | soap+2 hearts+2 | soap_r10
+> Ignore her | soap+0 | soap_r11
+> Leak a rumor about her | soap-2 chaos+1 | soap_r12
+#soap_r10
+say diva | ...You want MY advice? Well. Sit down, darling.
+goto soap_s2
+#soap_r11
+say diva | Hmph.
+goto soap_s2
+#soap_r12
+say director | We need to talk.
+undo
+goto soap_s2
+
+#soap_s2
+choice Season finale twist! Your character:
+> Was the evil twin ALL ALONG | soap+2 hearts+2 | soap_r20
+> Gets amnesia | soap+1 hearts+1 | soap_r21
+> Moves to another town forever | soap-1 chaos+1 | soap_r22
+#soap_r20
+say director | Ratings are THROUGH THE ROOF!
+goto soap_end
+#soap_r21
+say costar | Classic soap!
+goto soap_end
+#soap_r22
+say director | Uh, that's how you get written off...
+undo
+goto soap_end
+
+#soap_end
+if soap>=5 | soap_good
+ending ok | Not the End | Your character's in a coma. You'll be back next season.
+goto storyland
+#soap_good
+bg FFE066
+ending good | Soap Star | Daytime Emmy winner {name}! Veronica handed you the trophy!
+sticker soap_star
+set hearts+5
+save
+goto storyland

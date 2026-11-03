@@ -1,0 +1,74 @@
+; ===== STORY: College Freshman =====
+
+char roomie | Jordan | F1C9A5,F28CB9,2B1B24,FFFFFF,1,0,700
+char ra | RA Destiny | 5A3622,140E10,FFE066,FFFFFF,0,2,840
+char prof | Professor Lin | F1C9A5,140E10,FFFFFF,FFFFFF,1,1,400
+
+#college_start
+reset
+title College Freshman | college
+bond college | Jordan
+bg B8D8F8
+say me | First day of college. My own dorm. My own rules. My own laundry. Wait.
+say roomie | Hey. I'm Jordan. I like silence and black nail polish. You?
+say ra | Welcome to Hall C! Mandatory icebreaker games at 7!
+
+#college_s0
+choice Your roommate is super different from you.
+> Find something in common | college+2 hearts+2 | college_r00
+> Put up a pink divider curtain | college+1 hearts+1 | college_r01
+> Complain to the RA immediately | college-1 chaos+1 | college_r02
+#college_r00
+say roomie | You like horror movies too?! Okay, we're good.
+goto college_s1
+#college_r01
+say roomie | Fair. Your side is VERY pink.
+goto college_s1
+#college_r02
+say ra | Have you tried... talking to her?
+undo
+goto college_s1
+
+#college_s1
+choice Big midterm tomorrow.
+> Make a study group | college+2 hearts+2 | college_r10
+> Study alone all night | college+1 hearts+1 | college_r11
+> Go to the party instead | college-1 chaos+1 | college_r12
+#college_r10
+say prof | Excellent work. An A.
+goto college_s2
+#college_r11
+say roomie | You look like a zombie. A smart zombie.
+goto college_s2
+#college_r12
+say prof | ...See me after class.
+undo
+goto college_s2
+
+#college_s2
+choice Clubs fair! Join:
+> Fashion club | college+2 hearts+2 | college_r20
+> Dance team | college+2 hearts+2 | college_r21
+> Nothing | college-1 chaos+1 | college_r22
+#college_r20
+say ra | They need a president next year. Hint hint.
+goto college_end
+#college_r21
+say roomie | I'll come to your shows. Quietly.
+goto college_end
+#college_r22
+say ra | College is about trying stuff!
+undo
+goto college_end
+
+#college_end
+if college>=5 | college_good
+ending ok | Not the End | You passed! Sophomore year's gonna be better.
+goto storyland
+#college_good
+bg FFE066
+ending good | College Girl | Dean's list AND best friends with your roommate. Freshman year: aced.
+sticker college_girl
+set hearts+5
+save
+goto storyland

@@ -1,0 +1,74 @@
+; ===== STORY: Prima Ballerina =====
+
+char madame | Madame Petrova | F1C9A5,4A2A1C,2B1B24,FFFFFF,0,1,450
+char odette | Odette | F1C9A5,E9C96B,F7B8D2,FFFFFF,0,2,860
+char nia | Nia | 5A3622,140E10,C9A8F0,FF7EB3,0,2,900
+
+#ballet_start
+reset
+title Prima Ballerina | ballet
+bond ballet | Madame
+bg FDE4EF
+say me | Paris Ballet Academy. One spot for the lead in Swan Lake. It's gonna be mine.
+say madame | Posture! Grace! Or go home, little swan.
+say odette | Oh, you're auditioning too? Cute. I've been dancing since I was two.
+
+#ballet_s0
+choice Your feet are blistered after practice...
+> Tape them and keep practicing | ballet+2 hearts+2 | ballet_r00
+> Rest tonight, practice smart tomorrow | ballet+1 hearts+1 | ballet_r01
+> Skip practice, go to a party | ballet-1 chaos+1 | ballet_r02
+#ballet_r00
+say madame | Hmm. Dedication. I noticed.
+goto ballet_s1
+#ballet_r01
+say nia | Smart girl. Wanna get crepes?
+goto ballet_s1
+#ballet_r02
+say madame | Where WERE you yesterday?
+undo
+goto ballet_s1
+
+#ballet_s1
+choice Odette 'accidentally' hid your pointe shoes!
+> Borrow Nia's spare pair | ballet+2 hearts+2 | ballet_r10
+> Tell Madame | ballet+1 hearts+1 | ballet_r11
+> Hide HER shoes back | ballet-1 chaos+1 | ballet_r12
+#ballet_r10
+say nia | Take them! Go show her up!
+goto ballet_s2
+#ballet_r11
+say madame | Odette. My office. NOW.
+goto ballet_s2
+#ballet_r12
+say odette | You little... this is war.
+undo
+goto ballet_s2
+
+#ballet_s2
+choice Audition day. Your solo choice:
+> The classic Swan variation | ballet+2 hearts+2 | ballet_r20
+> Add your own hip-hop flair | ballet+1 hearts+1 | ballet_r21
+> Copy Odette's exact routine | ballet-1 chaos+1 | ballet_r22
+#ballet_r20
+say madame | Textbook. Beautiful.
+goto ballet_end
+#ballet_r21
+say nia | The judges are SHOOK!
+goto ballet_end
+#ballet_r22
+say odette | She stole my dance!!
+undo
+goto ballet_end
+
+#ballet_end
+if ballet>=5 | ballet_good
+ending ok | Not the End | Understudy this year... next year it's yours.
+goto storyland
+#ballet_good
+bg FFE066
+ending good | Prima Ballerina | You got the lead! Prima ballerina {name}!!
+sticker prima_ballerina
+set hearts+5
+save
+goto storyland

@@ -1,0 +1,61 @@
+; =========================================================
+;  NANNY DIARIES - story script
+;  #label            jump target
+;  char id | Name | skin,hair,shirt,clip,glasses(0/1),style(0-2),voicePitch
+;  bg RRGGBB
+;  say who | text | optionalVoiceClip   (who = me / char id)
+;  text Sender | message                 (flip-phone text)
+;  choice Prompt
+;  > Option text | effects | jumpLabel   (effects: hearts+2 trust+1 happy-1 chaos+1 ...)
+;  set effects      if cond | label      goto label
+;  sticker id   shop   claw   findcat   rate who   undo   save   end
+;  {name} = your name
+; =========================================================
+
+char shopkeep | Bijou | 8D5A3B,140E10,F69EC4,FFE066,0,2,900
+char narrator | Story Land | F1C9A5,F28CB9,FFFFFF,FFE066,0,0,700
+
+; ============ STORY LAND (the main menu of stories) ============
+; To add a new story: make romfs/stories/05_yourstory.txt,
+; give it a #yourstory_start label, and add a line below.
+#storyland
+bg C98B93
+choice @Pick a life, {name}. Turn to any page.
+> Nanny Diaries ~ Three families. One nanny. Zero chill. | | nanny_start
+> 2000s Teen Queen ~ Junior year, 2004. Flip phones and frenemies. | | teen_start
+> Prima Ballerina ~ One lead role. Blistered feet. A rival in pink. | | ballet_start
+> Pastor's Daughter ~ Everyone's watching. Including the new drummer. | | pastor_start
+> The Friend Group ~ Four best friends. One new girl. Group chat chaos. | | friends_start
+> Pop Star Dreams ~ A million views, a shady manager, a rival princess. | | pop_start
+> Boarding School ~ Plaid skirts, secret societies, a hidden library. | | board_start
+> Cheer Captain ~ Spirit fingers, regionals, and one rainy big game. | | cheer_start
+> Fashion Intern NYC ~ Oat milk lattes and the cover of GLOSS. | | nyc_start
+> Summer at Grandma's ~ No wifi. One ice cream shop. Best summer ever? | | beach_start
+> Sleepover Secrets ~ Satin pajamas, truth or dare, 3 AM creaks. | | sleep_start
+> Prom Night ~ No dress, no date, one week. Totally fine. | | prom_start
+> Mall Job ~ Glitter Galaxy, Black Friday, a cute pretzel boy. | | mall_start
+> Roller Rink Royalty ~ Disco ball, light-up wheels, save the Starlight. | | rink_start
+> Small-Town Pageant ~ Miss Peach Blossom. Smile with all your teeth. | | pageant_start
+> Pink Diamond Heist ~ A pink catsuit, laser halls, a family secret. | | heist_start
+> Soap Opera Star ~ Evil twins, slap scenes, a jealous diva. | | soap_start
+> Beauty Salon Boss ~ Pink chairs, your name on the door, a rival salon. | | salon_start
+> College Freshman ~ Your own dorm, your own rules, your own laundry. | | college_start
+> Witchy Girl ~ Sweet sixteen and suddenly magic. Midnight talks. | | witch_start
+> The Boutique ~ Spend your hearts on velour, pearls and second chances. | | land_shop
+> Collected Moments ~ Your scrapbook of best endings. | | land_stickers
+> Dear Diary ~ Save, load, or restyle yourself. | | land_diary
+> Close the Magazine ~ Save and quit. | | land_quit
+
+#land_shop
+say shopkeep | Welcome to the Boutique, love. Everything here carries into every story.
+shop
+goto storyland
+#land_stickers
+stickers
+goto storyland
+#land_diary
+diary
+goto storyland
+#land_quit
+save
+end

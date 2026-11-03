@@ -1,0 +1,74 @@
+; ===== STORY: Diamond Heist (it's fake!) =====
+
+char boss2 | Madame Noir | F1C9A5,140E10,2B1B24,E8C050,1,0,450
+char pixel | Pixel | C68E62,F28CB9,C9A8F0,FFFFFF,1,2,960
+char detective | Det. Rose | 5A3622,140E10,9FB8F5,FFFFFF,0,1,520
+
+#heist_start
+reset
+title Pink Diamond Heist | heist
+bond heist | the crew
+bg 2B1B24
+say me | I'm a cat burglar in a pink catsuit. Tonight's target: the Pink Star diamond.
+say pixel | I hacked the cameras. You have 90 seconds, babe.
+say boss2 | Bring me that diamond, chérie. And no mistakes.
+
+#heist_s0
+choice How do you get into the museum?
+> Through the air vents | heist+2 hearts+2 | heist_r00
+> Disguised as a tour guide | heist+1 hearts+1 | heist_r01
+> Front door, loud | heist-2 chaos+1 | heist_r02
+#heist_r00
+say pixel | Ooh, sneaky. I love it.
+goto heist_s1
+#heist_r01
+say detective | Hmm... you look familiar.
+goto heist_s1
+#heist_r02
+say detective | FREEZE!
+undo
+goto heist_s1
+
+#heist_s1
+choice Laser hallway!
+> Dance through the lasers | heist+2 hearts+2 | heist_r10
+> Use a mirror compact | heist+2 hearts+2 | heist_r11
+> Just run | heist-1 chaos+1 | heist_r12
+#heist_r10
+say pixel | Gymnast era paying off!
+goto heist_s2
+#heist_r11
+say pixel | Genius!
+goto heist_s2
+#heist_r12
+say pixel | ALARM! GO GO GO!
+undo
+goto heist_s2
+
+#heist_s2
+choice Twist! The diamond was stolen from YOUR family years ago...
+> Return it to your grandma | heist+2 hearts+2 | heist_r20
+> Give it to Madame Noir | heist+0 | heist_r21
+> Keep it for yourself | heist-1 chaos+1 | heist_r22
+#heist_r20
+say detective | ...I'll pretend I never saw you.
+goto heist_end
+#heist_r21
+say boss2 | Good girl. Here's your cut.
+goto heist_end
+#heist_r22
+say detective | You're under arrest!
+undo
+goto heist_end
+
+#heist_end
+if heist>=5 | heist_good
+ending ok | Not the End | You got away... barely. Pixel wants a vacation.
+goto storyland
+#heist_good
+bg FFE066
+ending good | Pink Thief | The Pink Star is home with your family. The perfect heist.
+sticker pink_thief
+set hearts+5
+save
+goto storyland

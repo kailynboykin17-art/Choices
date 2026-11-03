@@ -1,0 +1,75 @@
+; ===== STORY: The Friend Group =====
+
+char dani | Dani | C68E62,140E10,F28CB9,FFE066,0,0,880
+char kels | Kelsey | F1C9A5,E9C96B,9FD89A,FF7EB3,1,1,820
+char rae | Rae | 5A3622,140E10,C9A8F0,FFFFFF,0,2,940
+char sophie | Sophie | F1C9A5,4A2A1C,FFFFFF,E86A9E,0,1,760
+
+#friends_start
+reset
+title The Friend Group | friends
+bond friends | the girls
+bg F7B8D2
+say me | Me, Dani, Kelsey and Rae. Best friends since 3rd grade. Nothing can break us. Right?
+say sophie | Hi! I'm Sophie, I'm new. Can I sit with you guys?
+say dani | ...Sure. I GUESS.
+
+#friends_s0
+choice Dani doesn't want Sophie in the group.
+> Include Sophie anyway | friends+2 hearts+2 | friends_r00
+> Talk to Dani privately first | friends+1 hearts+1 | friends_r01
+> Side with Dani and ditch Sophie | friends-1 chaos+1 | friends_r02
+#friends_r00
+say sophie | You're so nice. I really needed a friend.
+goto friends_s1
+#friends_r01
+say dani | Okay... I was just jealous. Fine.
+goto friends_s1
+#friends_r02
+say sophie | Oh. Okay. Never mind.
+undo
+goto friends_s1
+
+#friends_s1
+choice Group chat drama: someone screenshot your message!
+> Address it face to face | friends+2 hearts+2 | friends_r10
+> Make a new group chat without the snitch | friends+0 | friends_r11
+> Post a vague status about it | friends-1 chaos+1 | friends_r12
+#friends_r10
+say rae | Okay that was mature. Respect.
+goto friends_s2
+#friends_r11
+say kels | Wait... why am I not in the new chat?
+goto friends_s2
+#friends_r12
+say dani | Was that about ME?!
+undo
+goto friends_s2
+
+#friends_s2
+choice Friendship anniversary! Plan the day:
+> Picnic + matching bracelets | friends+2 hearts+2 | friends_r20
+> Mall + photo booth | friends+2 hearts+2 | friends_r21
+> Forget it's today | friends-2 chaos+1 | friends_r22
+#friends_r20
+say rae | I'm literally gonna cry. BFFs forever.
+goto friends_end
+#friends_r21
+say kels | These pics are going in my locker!
+goto friends_end
+#friends_r22
+say dani | ...You forgot?
+undo
+goto friends_end
+
+#friends_end
+if friends>=5 | friends_good
+ending ok | Not the End | Some drama... but you're still a crew.
+goto storyland
+#friends_good
+bg FFE066
+ending good | Bff Forever | Five best friends now. Unbreakable. Matching bracelets forever.
+sticker bff_forever
+set hearts+5
+save
+goto storyland

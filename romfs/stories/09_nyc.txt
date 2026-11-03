@@ -1,0 +1,74 @@
+; ===== STORY: Fashion Intern NYC =====
+
+char miranda | Ms. Valentina | F1C9A5,140E10,2B1B24,E8C050,1,1,400
+char jules | Jules | 8D5A3B,F28CB9,F69EC4,FFFFFF,0,0,880
+char chad | Chad | F1C9A5,E9C96B,7FB0E0,FFFFFF,0,1,380
+
+#nyc_start
+reset
+title Fashion Intern NYC | nyc
+bond nyc | the editor
+bg 2B1B24
+say me | My first day interning at GLOSS magazine in New York City!!
+say miranda | Coffee. Oat milk. 140 degrees. You have 4 minutes.
+say jules | Welcome to the fashion closet, babe. Survival tip: never cry in the elevator.
+
+#nyc_s0
+choice Ms. Valentina needs a look for the cover.
+> Pink tulle + leopard | outfit=3 nyc+2 hearts+2 | nyc_r00
+> All black, minimal | outfit=4 nyc+1 hearts+1 | nyc_r01
+> Pick the first thing you see | nyc-1 chaos+1 | nyc_r02
+#nyc_r00
+say miranda | ...This is not terrible. Shoot it.
+goto nyc_s1
+#nyc_r01
+say jules | Safe, but chic.
+goto nyc_s1
+#nyc_r02
+say miranda | Is this a joke?
+undo
+goto nyc_s1
+
+#nyc_s1
+choice Chad from marketing stole your idea in the meeting.
+> Show your notes with dates on them | nyc+2 hearts+2 | nyc_r10
+> Let it go this time | nyc+0 | nyc_r11
+> Spill coffee on him | nyc-2 chaos+1 | nyc_r12
+#nyc_r10
+say miranda | Chad. Out. {name}, stay.
+goto nyc_s2
+#nyc_r11
+say jules | Girl. NO. You can't let that slide.
+goto nyc_s2
+#nyc_r12
+say miranda | HR. Now.
+undo
+goto nyc_s2
+
+#nyc_s2
+choice Fashion week! You get backstage passes.
+> Help the designer fix a ripped dress | nyc+2 hearts+2 | nyc_r20
+> Network with models | nyc+1 hearts+1 | nyc_r21
+> Take selfies all night | nyc-1 chaos+1 | nyc_r22
+#nyc_r20
+say jules | You literally SAVED the show!
+goto nyc_end
+#nyc_r21
+say jules | Ooh, I see that card collection!
+goto nyc_end
+#nyc_r22
+say miranda | I didn't hire you to post.
+undo
+goto nyc_end
+
+#nyc_end
+if nyc>=5 | nyc_good
+ending ok | Not the End | Internship over. Great reference letter though!
+goto storyland
+#nyc_good
+bg FFE066
+ending good | Nyc Editor | Ms. Valentina hired you as junior editor! {name} takes Manhattan!
+sticker nyc_editor
+set hearts+5
+save
+goto storyland

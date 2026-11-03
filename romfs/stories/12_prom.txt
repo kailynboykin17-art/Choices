@@ -1,0 +1,73 @@
+; ===== STORY: Prom Night =====
+
+char amber | Amber | F1C9A5,E9C96B,F69EC4,E8C050,0,0,840
+char jay | Jay | 8D5A3B,140E10,2B1B24,FFFFFF,0,1,420
+char tia | Tia | 5A3622,140E10,FFE066,FF7EB3,0,2,920
+
+#prom_start
+reset
+title Prom Night | prom
+bond prom | the night
+bg F28CB9
+say me | Prom is in one week. I have no dress and no date. Totally fine. Not panicking.
+say tia | Girl we are going as besties if no one asks. Pinky promise.
+say amber | I'm running for prom queen. Obviously.
+
+#prom_s0
+choice Dress shopping!
+> Sparkly pink with a slit | outfit=3 prom+2 hearts+2 | prom_r00
+> Vintage thrift dress | outfit=3 prom+2 hearts+2 | prom_r01
+> Your sister's old dress | outfit=5 prom+0 | prom_r02
+#prom_r00
+say tia | YOU ARE THE MOMENT.
+goto prom_s1
+#prom_r01
+say jay | That's... really pretty. Like, really.
+goto prom_s1
+#prom_r02
+say tia | It's... fine?
+goto prom_s1
+
+#prom_s1
+choice Jay asks you to prom with a cheesy sign.
+> Say yes! | prom+2 hearts+2 | prom_r10
+> Go with Tia as best friends | prom+2 hearts+2 | prom_r11
+> Say no in front of everybody | prom-1 chaos+1 | prom_r12
+#prom_r10
+say jay | For real?! Okay. Cool. Super cool.
+goto prom_s2
+#prom_r11
+say tia | Besties > boys. Always.
+goto prom_s2
+#prom_r12
+say jay | ...Okay. Ouch.
+undo
+goto prom_s2
+
+#prom_s2
+choice Amber's dress rips right before the crowning!
+> Lend her your jacket | prom+2 hearts+2 | prom_r20
+> Fix it with safety pins | prom+2 hearts+2 | prom_r21
+> Take a pic and post it | prom-2 chaos+1 | prom_r22
+#prom_r20
+say amber | ...Thank you. I've been so mean to you.
+goto prom_end
+#prom_r21
+say tia | Fashion emergency SOLVED.
+goto prom_end
+#prom_r22
+say amber | You're horrible!
+undo
+goto prom_end
+
+#prom_end
+if prom>=5 | prom_good
+ending ok | Not the End | Didn't win, but you danced all night. Perfect.
+goto storyland
+#prom_good
+bg FFE066
+ending good | Prom Queen | PROM QUEEN {name}!! Nobody saw that coming!
+sticker prom_queen
+set hearts+5
+save
+goto storyland

@@ -1,0 +1,74 @@
+; ===== STORY: Witchy Girl =====
+
+char luna | Grandma Luna | 5A3622,D0D0D0,6A4C93,E8C050,1,0,500
+char cat | Midnight (cat) | 2B1B24,2B1B24,2B1B24,FFE066,0,1,1100
+char hex | Hexa | F1C9A5,140E10,2B1B24,9FD89A,0,0,760
+
+#witch_start
+reset
+title Witchy Girl | witch
+bond witch | the coven
+bg 6A4C93
+say me | On my 16th birthday I found out... I'm a WITCH. Like, for real.
+say cat | Meow. I mean, hello. Yes, I talk. Keep up.
+say luna | Your powers are wild, sweetheart. Time to learn control.
+
+#witch_s0
+choice Your first spell:
+> A spell to make plants bloom | witch+2 hearts+2 | witch_r00
+> Turn your nails glittery | witch+1 hearts+1 | witch_r01
+> Turn your ex into a frog | witch-2 chaos+1 | witch_r02
+#witch_r00
+say luna | Beautiful! Gentle magic is strong magic.
+goto witch_s1
+#witch_r01
+say cat | Vain. But cute.
+goto witch_s1
+#witch_r02
+say luna | WE DO NOT DO THAT.
+undo
+goto witch_s1
+
+#witch_s1
+choice Hexa, a dark witch, offers you forbidden power.
+> Refuse and protect your coven | witch+2 hearts+2 | witch_r10
+> Ask what she wants first | witch+1 hearts+1 | witch_r11
+> Take it | witch-2 chaos+1 | witch_r12
+#witch_r10
+say luna | I'm so proud of you.
+goto witch_s2
+#witch_r11
+say hex | Smart. Maybe you're not like the others.
+goto witch_s2
+#witch_r12
+say cat | Oh no. Oh no no no.
+undo
+goto witch_s2
+
+#witch_s2
+choice Halloween night: the town needs you!
+> Cast a protection spell over everyone | witch+2 hearts+2 | witch_r20
+> Team up with Hexa | witch+2 hearts+2 | witch_r21
+> Stay home and eat candy | witch-1 chaos+1 | witch_r22
+#witch_r20
+say luna | The whole town glows... you did it.
+goto witch_end
+#witch_r21
+say hex | Light AND dark. Together. Who knew.
+goto witch_end
+#witch_r22
+say cat | The pumpkins are attacking!!
+undo
+goto witch_end
+
+#witch_end
+if witch>=5 | witch_good
+ending ok | Not the End | Still learning... but magic is in your blood.
+goto storyland
+#witch_good
+bg FFE066
+ending good | Witch Supreme | Supreme Witch {name}! The town is safe and Midnight approves.
+sticker witch_supreme
+set hearts+5
+save
+goto storyland

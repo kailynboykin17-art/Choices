@@ -1,0 +1,74 @@
+; ===== STORY: Beauty Salon Boss =====
+
+char auntie | Auntie Bernice | 5A3622,140E10,C9A8F0,E8C050,1,1,520
+char client | Shay | 8D5A3B,E9C96B,F69EC4,FFFFFF,0,0,900
+char rival2 | Glamazon Salon | F1C9A5,E86A9E,2B1B24,FFFFFF,0,0,700
+
+#salon_start
+reset
+title Beauty Salon Boss | salon
+bond salon | the block
+bg FFC8DC
+say me | I just opened my own salon! Pink chairs, glitter floors, my name on the door.
+say auntie | I'll help you, baby. Fifty years of doing hair in this neighborhood.
+say rival2 | Cute little salon. Too bad Glamazon is opening across the street.
+
+#salon_s0
+choice First client wants a big prom look:
+> Sleek updo with crystal pins | salon+2 hearts+2 | salon_r00
+> Big bouncy curls | salon+2 hearts+2 | salon_r01
+> Try a new technique on her | salon-1 chaos+1 | salon_r02
+#salon_r00
+say client | I'm CRYING. I look like a queen!
+goto salon_s1
+#salon_r01
+say auntie | That's my girl.
+goto salon_s1
+#salon_r02
+say client | Why is it... crunchy?
+undo
+goto salon_s1
+
+#salon_s1
+choice How do you get new customers?
+> Free braids for kids on Saturdays | salon+2 hearts+2 | salon_r10
+> Post before/after pics | salon+1 hearts+1 | salon_r11
+> Steal Glamazon's clients | salon-1 chaos+1 | salon_r12
+#salon_r10
+say auntie | The whole block is talking about you.
+goto salon_s2
+#salon_r11
+say client | I shared it with all my friends!
+goto salon_s2
+#salon_r12
+say rival2 | You're gonna regret that.
+undo
+goto salon_s2
+
+#salon_s2
+choice Glamazon challenges you to a hair battle!
+> Accept and go all out | salon+2 hearts+2 | salon_r20
+> Suggest teaming up for a charity show | salon+2 hearts+2 | salon_r21
+> Back down | salon-1 chaos+1 | salon_r22
+#salon_r20
+say auntie | You SNATCHED that win.
+goto salon_end
+#salon_r21
+say rival2 | ...Okay. That's actually classy.
+goto salon_end
+#salon_r22
+say client | Girl, really?
+undo
+goto salon_end
+
+#salon_end
+if salon>=5 | salon_good
+ending ok | Not the End | The salon's doing okay. Every boss starts somewhere.
+goto storyland
+#salon_good
+bg FFE066
+ending good | Salon Boss | Your salon is the #1 spot in town! Line out the door!
+sticker salon_boss
+set hearts+5
+save
+goto storyland

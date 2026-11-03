@@ -1,0 +1,292 @@
+; ===== STORY: NANNY DIARIES =====
+char agency   | Ms. Dolly    | F1C9A5,F28CB9,C9A8F0,FFFFFF,1,1,820
+char bell     | Mrs. Bell    | F1C9A5,E9C96B,FFFFFF,E8C050,0,1,560
+char lulu     | Lulu Bell    | F1C9A5,E9C96B,F7B8D2,FF7EB3,0,2,1000
+char rivera   | Mr. Rivera   | C68E62,140E10,7FB0E0,FFFFFF,1,1,380
+char trip     | The Triplets | C68E62,4A2A1C,FFE066,9FD89A,0,2,950
+char okafor   | Mr. Okafor   | 5A3622,140E10,FFFFFF,F69EC4,0,1,330
+char zuri     | Zuri         | 5A3622,140E10,C9A8F0,FF7EB3,1,2,980
+char tiff     | Tiffani      | F1C9A5,E9C96B,D9A86C,E86A9E,0,0,720
+
+#nanny_start
+reset
+title Nanny Diaries | nanny
+bond trust | the kids
+bg F7B8D2
+say agency | Welcome to Glitter & Grace Nanny Agency, {name}! I'm Ms. Dolly.
+say agency | Every good choice earns you Hearts. Spend them in Bijou's Hearts Shop on cute stuff or second chances!
+say me | Okay, I'm SO ready. Which family do I get?
+sticker first_day
+set hearts+3
+say agency | Here's 3 Hearts to start. Now pick your family!
+goto nanny_hub
+
+#nanny_hub
+bg F7B8D2
+choice Where to, {name}?
+> The Bell penthouse (rich + fancy) | | bell_1
+> The Rivera house (TRIPLETS) | | rivera_1
+> Okafor's Bakery (single dad) | | okafor_1
+> Bijou's Hearts Shop | | nanny_shop
+> Mall trip | | nanny_mall
+> Back to Story Land | | quit
+
+#nanny_shop
+bg FDE4EF
+say shopkeep | Heyyy! Welcome to the Hearts Shop~
+shop
+goto nanny_hub
+
+#quit
+save
+goto storyland
+
+; ===================== MALL =====================
+#nanny_mall
+bg C9A8F0
+say me | The mall! Flip phones, lip gloss, and a CLAW MACHINE.
+choice What first?
+> Lip gloss kiosk | hearts-1 happy+1 | mall_gloss
+> Claw machine | | mall_claw
+> Food court pretzel | hungry-2 | mall_food
+#mall_gloss
+say shopkeep | Strawberry shimmer, perfect for you babe!
+goto nanny_hub
+#mall_claw
+claw
+say me | Mall rat behavior. I love it here.
+goto nanny_hub
+#mall_food
+say me | Cinnamon sugar pretzel. Life is good.
+goto nanny_hub
+
+; ===================== BELL FAMILY =====================
+#bell_1
+bg FFF4E0
+sticker bell_family
+say bell | Darling, you must be the new nanny. Lulu is... a lot. Good luck.
+say lulu | Are you gonna be boring like the last nanny? She cried.
+say me | Boring? Me? Never.
+text Mrs. Bell | Lulu has a gala photoshoot at 4. She MUST look perfect. Kisses.
+choice Pick Lulu's outfit (hint: it's a fancy gala!)
+> Pink tulle dress + pearls | hearts+2 trust+1 happy+1 | bell_dress_good
+> Her soccer jersey | trust-1 | bell_dress_meh
+> Let her pick... she picks a cape and rain boots | chaos+1 happy+2 | bell_dress_chaos
+#bell_dress_good
+say lulu | Okay... this is actually SO cute. Fine. You can stay.
+goto bell_hair
+#bell_dress_meh
+say lulu | Ew. Mommy is gonna freak.
+goto bell_hair
+#bell_dress_chaos
+say bell | WHY is my daughter dressed as a superhero frog?!
+undo
+goto bell_hair
+
+#bell_hair
+bg F7B8D2
+choice Hair salon time! Lulu's hair:
+> Butterfly clips everywhere | hearts+2 happy+1 | bell_hair2
+> Space buns | hearts+1 happy+1 | bell_hair2
+> Tiny bow on top | hearts+1 trust+1 | bell_hair2
+#bell_hair2
+sticker makeover
+say lulu | I look like a POPSTAR.
+say tiff | Oh. You're the new Bell nanny? Cute. I'm Tiffani, I nanny next door. They'll fire you in a week.
+choice Tiffani's being rude...
+> Sassy: "Love that for you. Anyway." | hearts+1 rival+1 | bell_rival_sassy
+> Sweet: "Want to do a playdate sometime?" | hearts+2 friendrival+1 | bell_rival_sweet
+#bell_rival_sassy
+say tiff | ...Okay, rude. I like you a little.
+goto bell_snack
+#bell_rival_sweet
+say tiff | Ugh. Fine. Thursday. Bring snacks.
+goto bell_snack
+
+#bell_snack
+bg FFF4E0
+choice Snack bar! Lulu wants:
+> Strawberries + cheese crackers | hungry-2 happy+1 hearts+1 | bell_snack2
+> A whole cake | hungry-2 happy+2 tired-1 chaos+1 | bell_cake
+> Kale chips | hungry-1 happy-1 | bell_snack2
+#bell_cake
+say me | Oh no. Sugar rush. She's bouncing off the chandelier.
+undo
+goto bell_snack2
+#bell_snack2
+choice Afternoon plan?
+> Nap time | tired-2 | bell_end
+> Homework help | trust+1 | bell_quiz
+> Sneak in a claw machine trip | happy+1 | bell_claw
+#bell_claw
+claw
+goto bell_end
+#bell_quiz
+say lulu | What's 7 times 8? I bet you don't know.
+choice 7 x 8 = ?
+> 54 | trust-1 | bell_quiz_bad
+> 56 | hearts+2 trust+2 | bell_quiz_good
+> 63 | trust-1 | bell_quiz_bad
+#bell_quiz_good
+say lulu | ...Okay you're smart. Don't tell anyone I said that.
+goto bell_end
+#bell_quiz_bad
+say lulu | LOL. Wrong. It's 56.
+goto bell_end
+#bell_end
+rate bell
+if trust>=4 | bell_secret
+goto nanny_end_check
+#bell_secret
+say lulu | Psst... I'm only mean 'cause Mommy's never home. You're my favorite nanny.
+set hearts+3
+goto nanny_end_check
+
+; ===================== RIVERA TRIPLETS =====================
+#rivera_1
+bg D8F0FF
+sticker triplets
+say rivera | Thank GOODNESS you're here. Mia, Max and Milo. Three kids. One of you. Good luck!
+say trip | NANNY! NANNY! NANNY!
+choice Morning plan:
+> Park | happy+2 tired+1 | rivera_park
+> Crafts at home | happy+1 trust+1 | rivera_craft
+> Let them watch cartoons all day | happy+1 trust-1 | rivera_tv
+#rivera_park
+say trip | SWINGS! FASTER! HIGHER!
+goto rivera_dress
+#rivera_tv
+say rivera | They watched 9 hours of TV?? Hmm.
+goto rivera_dress
+#rivera_craft
+choice Glitter or crayons?
+> Crayons (safe) | hearts+1 | rivera_dress
+> GLITTER | chaos+1 happy+2 | rivera_glitter
+#rivera_glitter
+sticker glitter_disaster
+say me | There is glitter. In the dog. In the ceiling fan. In my SOUL.
+say rivera | ...Why is my house sparkling.
+undo
+goto rivera_dress
+
+#rivera_dress
+choice Get them dressed (hint: it's cold!)
+> Puffer jackets + mittens | hearts+2 trust+1 | rivera_cat
+> Matching tank tops | trust-1 hungry+1 | rivera_cat
+> Let them dress themselves | chaos+1 happy+1 | rivera_dress_chaos
+#rivera_dress_chaos
+say trip | Milo is wearing a lampshade. Mia is wearing three socks. Max is naked.
+undo
+goto rivera_cat
+
+#rivera_cat
+say trip | NANNY!! Mr. Whiskers is GONE!
+findcat
+say me | Found him! He was hiding the whole time.
+set trust+1
+choice Sleepover night! Movie pick:
+> Princess movie | happy+1 | rivera_pj
+> Scary movie | chaos+1 tired+2 | rivera_scary
+> Dance-off instead | happy+2 tired+1 hearts+1 | rivera_pj
+#rivera_scary
+say trip | WAAAAH! We're scared! We're sleeping in YOUR bed!
+undo
+goto rivera_pj
+#rivera_pj
+choice Bedtime snack?
+> Warm milk + cookies | hungry-2 tired-1 hearts+1 | rivera_end
+> Popcorn | hungry-1 happy+1 | rivera_end
+> Nothing, straight to bed | hungry+1 | rivera_end
+#rivera_end
+text Tiffani | heard u survived the triplets?? respect fr
+rate rivera
+goto nanny_end_check
+
+; ===================== OKAFOR BAKERY =====================
+#okafor_1
+bg FFE8D6
+sticker bakery
+say okafor | Welcome! I run the bakery downstairs. Zuri's upstairs doing... something.
+say zuri | I'm making a fashion magazine. You're gonna be in it.
+choice Zuri's magazine shoot: pick your look
+> Pink fuzzy top + leopard | hearts+2 happy+1 trust+1 | okafor_shoot
+> Denim on denim | hearts+1 happy+1 | okafor_shoot
+> Your pajamas | trust+1 | okafor_shoot
+#okafor_shoot
+say zuri | Serve! SERVE! Okay you're on the cover.
+say okafor | Could you two help in the bakery? The morning rush is crazy.
+choice Help at the bakery?
+> Decorate cupcakes with Zuri | happy+2 trust+1 hearts+1 | okafor_cupcake
+> Work the register | hearts+2 tired+1 | okafor_reg
+> Taste test everything | hungry-3 chaos+1 | okafor_eat
+#okafor_eat
+say okafor | ...Where did 40 croissants go?
+undo
+goto okafor_night
+#okafor_cupcake
+say zuri | Mine has 12 sprinkles colors. It's art.
+goto okafor_night
+#okafor_reg
+say okafor | You're a natural!
+goto okafor_night
+
+#okafor_night
+text Mr. Okafor | Thank you for today. Zuri hasn't smiled like that in a while.
+choice Zuri asks you to stay for dinner.
+> Of course! | trust+2 happy+1 | okafor_dinner
+> Sorry, I gotta go | trust-1 | okafor_end
+#okafor_dinner
+say zuri | Can you be my nanny forever? Like... for real?
+set hearts+2
+#okafor_end
+rate okafor
+goto nanny_end_check
+
+; ===================== ENDINGS =====================
+#nanny_end_check
+if chaos>=4 | nanny_end_fired
+if stars>=13 | nanny_end_agency
+if trust>=5 | nanny_end_family
+if happy>=4 | nanny_end_best
+goto nanny_end_ok
+
+#nanny_end_fired
+bg D0D0D0
+say agency | {name}... we've had complaints. Glitter. Lampshades. Cake. You're fired, babe.
+sticker fired
+set chaos=0
+ending ok | Not the End | Different choices, different ending.
+goto nanny_after
+#nanny_end_agency
+bg FFE066
+say me | Five-star reviews everywhere... you know what? I'm opening MY OWN agency.
+ending good | Agency | Your story, your ending.
+sticker agency
+set hearts+10
+goto nanny_after
+#nanny_end_family
+bg F7B8D2
+say me | They said I'm not just the nanny anymore. I'm family.
+ending good | Family | Your story, your ending.
+sticker family
+set hearts+5
+goto nanny_after
+#nanny_end_best
+bg FFF4E0
+say agency | Best. Nanny. EVER. You get the golden pacifier award!
+ending good | Best Nanny | Your story, your ending.
+sticker best_nanny
+set hearts+5
+goto nanny_after
+#nanny_end_ok
+say agency | Not bad, {name}! Keep going and you'll be a legend.
+ending ok | Not the End | Different choices, different ending.
+goto nanny_after
+
+#nanny_after
+if friendrival>=1 | nanny_rivalfriend
+goto nanny_hub
+#nanny_rivalfriend
+text Tiffani | ok ur actually kinda my bestie now. dont tell anyone
+sticker rival_friend
+goto nanny_hub

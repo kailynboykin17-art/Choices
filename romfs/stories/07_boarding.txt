@@ -1,0 +1,74 @@
+; ===== STORY: New Girl at Boarding School =====
+
+char headmistress | Headmistress Grey | F1C9A5,D0D0D0,2B1B24,FFFFFF,1,1,420
+char ivy | Ivy | F1C9A5,E9C96B,FFFFFF,E8C050,0,0,800
+char pri | Priya | C68E62,140E10,9FD89A,FF7EB3,1,1,880
+
+#board_start
+reset
+title Boarding School | board
+bond board | the mystery
+bg D8F0FF
+say me | St. Clementine's Academy. Plaid skirts, old castles and secret societies. Wow.
+say ivy | You're the scholarship girl? How... quaint.
+say pri | Ignore Ivy. I'm Priya, your roommate! There's a secret in this school, you know.
+
+#board_s0
+choice Midnight! Priya wants to sneak to the old library.
+> Go with her, quietly | board+2 hearts+2 | board_r00
+> Stay in bed | board+0 | board_r01
+> Tell the headmistress | board-1 chaos+1 | board_r02
+#board_r00
+say pri | Look! A hidden door behind the bookshelf!
+goto board_s1
+#board_r01
+say pri | Fine, I'll go alone. Boring!
+goto board_s1
+#board_r02
+say pri | Wow. Snitch.
+undo
+goto board_s1
+
+#board_s1
+choice Ivy invites you to join the Silver Rose Society.
+> Join to find out its secrets | board+2 hearts+2 | board_r10
+> Say no politely | board+1 hearts+1 | board_r11
+> Expose it to the whole school | board-1 chaos+1 | board_r12
+#board_r10
+say ivy | Welcome, sister. Don't tell anyone.
+goto board_s2
+#board_r11
+say ivy | Your loss, scholarship girl.
+goto board_s2
+#board_r12
+say headmistress | Detention. For a MONTH.
+undo
+goto board_s2
+
+#board_s2
+choice You find the founder's lost diary!
+> Share it with Priya and Ivy | board+2 hearts+2 | board_r20
+> Give it to the headmistress | board+1 hearts+1 | board_r21
+> Sell it online | board-2 chaos+1 | board_r22
+#board_r20
+say ivy | ...You included me? Okay. Truce.
+goto board_end
+#board_r21
+say headmistress | Remarkable. Extra credit.
+goto board_end
+#board_r22
+say headmistress | EXPELLED.
+undo
+goto board_end
+
+#board_end
+if board>=5 | board_good
+ending ok | Not the End | You made it through first term. The castle still has secrets...
+goto storyland
+#board_good
+bg FFE066
+ending good | Boarding Sleuth | You solved the mystery! Head girl {name} of St. Clementine's.
+sticker boarding_sleuth
+set hearts+5
+save
+goto storyland

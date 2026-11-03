@@ -1,0 +1,74 @@
+; ===== STORY: Mall Job =====
+
+char boss | Boss Brenda | F1C9A5,E9C96B,E86A9E,FFFFFF,1,1,560
+char kai | Kai | C68E62,140E10,2B1B24,FFFFFF,0,1,420
+char karen | Angry Customer | F1C9A5,E9C96B,9FB8F5,FFFFFF,0,1,640
+
+#mall_start
+reset
+title Mall Job | mall
+bond mall | the boss
+bg FFB3D9
+say me | My first job! At Glitter Galaxy, the most Y2K store in the mall.
+say boss | Rule one: fold the tees. Rule two: smile. Rule three: NO free body glitter.
+say kai | I work at the pretzel place next door. Free pretzel for the new girl.
+
+#mall_s0
+choice A customer wants to return used lip gloss.
+> Politely explain the rules | mall+2 hearts+2 | mall_r00
+> Get the manager | mall+1 hearts+1 | mall_r01
+> Roll your eyes | mall-2 chaos+1 | mall_r02
+#mall_r00
+say karen | ...Fine. You were nice about it.
+goto mall_s1
+#mall_r01
+say boss | I'll handle it. Good call.
+goto mall_s1
+#mall_r02
+say karen | I WANT YOUR NAME.
+undo
+goto mall_s1
+
+#mall_s1
+choice Slow day. What do you do?
+> Redo the window display | mall+2 hearts+2 | mall_r10
+> Chat with Kai at the pretzel stand | mall+1 hearts+1 | mall_r11
+> Nap in the stockroom | mall-1 chaos+1 | mall_r12
+#mall_r10
+say boss | Sales went up 40%! Who did this?!
+goto mall_s2
+#mall_r11
+say kai | Our breaks match now. Coincidence?
+goto mall_s2
+#mall_r12
+say boss | Are you SLEEPING on the scrunchies?
+undo
+goto mall_s2
+
+#mall_s2
+choice Black Friday chaos!
+> Organize a line system | mall+2 hearts+2 | mall_r20
+> Just try your best | mall+1 hearts+1 | mall_r21
+> Hide | mall-1 chaos+1 | mall_r22
+#mall_r20
+say boss | You saved my sanity.
+goto mall_end
+#mall_r21
+say kai | You survived! Pretzel?
+goto mall_end
+#mall_r22
+say boss | Where did she GO?!
+undo
+goto mall_end
+
+#mall_end
+if mall>=5 | mall_good
+ending ok | Not the End | You survived retail. That's a win honestly.
+goto storyland
+#mall_good
+bg FFE066
+ending good | Mall Employee | Employee of the month! And the assistant manager badge!
+sticker mall_employee
+set hearts+5
+save
+goto storyland

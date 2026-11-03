@@ -1,0 +1,74 @@
+; ===== STORY: Cheer Captain =====
+
+char coach | Coach Tammy | F1C9A5,E9C96B,E86A9E,FFFFFF,0,2,620
+char bree | Bree | C68E62,4A2A1C,E86A9E,FFFFFF,0,2,920
+char tasha | Tasha | 5A3622,140E10,E86A9E,FFE066,0,2,860
+
+#cheer_start
+reset
+title Cheer Captain | cheer
+bond cheer | the squad
+bg FFE066
+say me | Tryouts for cheer captain. Spirit fingers: ready.
+say coach | I need a captain who can LEAD, not just flip!
+say tasha | Girl, I believe in you. Let's run that routine.
+
+#cheer_s0
+choice Bree fell during practice and is crying.
+> Help her up and fix the stunt | cheer+2 hearts+2 | cheer_r00
+> Keep practicing your own part | cheer+0 | cheer_r01
+> Laugh | cheer-2 chaos+1 | cheer_r02
+#cheer_r00
+say bree | Thank you... I'm so scared of messing up.
+goto cheer_s1
+#cheer_r01
+say coach | Hmm. Where's the teamwork?
+goto cheer_s1
+#cheer_r02
+say bree | ...Wow.
+undo
+goto cheer_s1
+
+#cheer_s1
+choice Pick the competition cheer:
+> Brand-new routine with a pyramid | cheer+2 hearts+2 | cheer_r10
+> Last year's safe routine | cheer+1 hearts+1 | cheer_r11
+> Let everyone freestyle | cheer-1 chaos+1 | cheer_r12
+#cheer_r10
+say coach | AMBITIOUS! I love it!
+goto cheer_s2
+#cheer_r11
+say tasha | Safe... but kind of boring.
+goto cheer_s2
+#cheer_r12
+say coach | Is that a cheer or a mosh pit?
+undo
+goto cheer_s2
+
+#cheer_s2
+choice Big game! It's raining hard.
+> Cheer anyway, louder! | cheer+2 hearts+2 | cheer_r20
+> Move under the bleachers | cheer+1 hearts+1 | cheer_r21
+> Go home | cheer-1 chaos+1 | cheer_r22
+#cheer_r20
+say tasha | The crowd is going CRAZY!
+goto cheer_end
+#cheer_r21
+say bree | At least the poms are dry.
+goto cheer_end
+#cheer_r22
+say coach | Captains don't quit!
+undo
+goto cheer_end
+
+#cheer_end
+if cheer>=5 | cheer_good
+ending ok | Not the End | Co-captain with Tasha. Not bad at all!
+goto storyland
+#cheer_good
+bg FFE066
+ending good | Cheer Captain | CAPTAIN {name}! And you won regionals!
+sticker cheer_captain
+set hearts+5
+save
+goto storyland

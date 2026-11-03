@@ -1,0 +1,74 @@
+; ===== STORY: Summer at Grandma's =====
+
+char grandma | Grandma Pearl | 5A3622,D0D0D0,F69EC4,FFFFFF,1,1,500
+char leo | Leo | C68E62,4A2A1C,FFFFFF,FFFFFF,0,1,420
+char coco | Coco | 8D5A3B,140E10,FFE066,FF7EB3,0,2,960
+
+#beach_start
+reset
+title Summer at Grandma's | beach
+bond beach | the town
+bg 9FE0F0
+say me | A whole summer in Grandma's tiny beach town. No mall. No wifi. Help.
+say grandma | Baby, you're gonna love it. The ice cream shop needs summer help!
+say coco | Yo! I'm Coco. You're Pearl's granddaughter? Come to the bonfire tonight!
+
+#beach_s0
+choice First day at the ice cream shop:
+> Invent a new flavor | beach+2 hearts+2 | beach_r00
+> Just scoop and smile | beach+1 hearts+1 | beach_r01
+> Eat the inventory | beach-1 chaos+1 | beach_r02
+#beach_r00
+say grandma | Pink lemonade swirl! It's selling out!
+goto beach_s1
+#beach_r01
+say leo | You've got a nice smile. Just saying.
+goto beach_s1
+#beach_r02
+say grandma | Where'd all the mint chip go?!
+undo
+goto beach_s1
+
+#beach_s1
+choice Bonfire night!
+> Go and make friends | beach+2 hearts+2 | beach_r10
+> Stay in and call your old friends | beach+0 | beach_r11
+> Complain it's boring | beach-1 chaos+1 | beach_r12
+#beach_r10
+say coco | Told you. Best summer ever.
+goto beach_s2
+#beach_r11
+say grandma | Don't spend the summer on the phone.
+goto beach_s2
+#beach_r12
+say coco | Okay... city girl.
+undo
+goto beach_s2
+
+#beach_s2
+choice Grandma's shop might close. Help?
+> Throw a summer festival | beach+2 hearts+2 | beach_r20
+> Start a social media page | beach+1 hearts+1 | beach_r21
+> Say it's not your problem | beach-2 chaos+1 | beach_r22
+#beach_r20
+say grandma | The whole town came! We're saved!
+goto beach_end
+#beach_r21
+say leo | We got 50 followers! That's a lot for here.
+goto beach_end
+#beach_r22
+say grandma | ...Oh.
+undo
+goto beach_end
+
+#beach_end
+if beach>=5 | beach_good
+ending ok | Not the End | Summer's over. You'll miss this place, actually.
+goto storyland
+#beach_good
+bg FFE066
+ending good | Beach Summer | You saved the shop! Best summer of your LIFE.
+sticker beach_summer
+set hearts+5
+save
+goto storyland

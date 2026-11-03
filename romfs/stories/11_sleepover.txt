@@ -1,0 +1,72 @@
+; ===== STORY: Sleepover Secrets =====
+
+char mya | Mya | 5A3622,140E10,F69EC4,FF7EB3,0,2,940
+char hailey | Hailey | F1C9A5,E9C96B,C9A8F0,FFE066,0,0,820
+char gabby | Gabby | C68E62,4A2A1C,9FD89A,FFFFFF,1,1,880
+
+#sleep_start
+reset
+title Sleepover Secrets | sleep
+bond sleep | the girls
+bg C9A8F0
+say me | Sleepover at my house! Pizza, face masks, and probably drama.
+say mya | Okay. Truth or dare. Everybody. No chickening out.
+say gabby | I brought the karaoke machine!!
+
+#sleep_s0
+choice Pick the pajamas:
+> Matching pink satin sets | outfit=0 sleep+2 hearts+2 | sleep_r00
+> Big comfy hoodies | outfit=2 sleep+1 hearts+1 | sleep_r01
+> Your little brother's dinosaur PJs | outfit=1 sleep+0 | sleep_r02
+#sleep_r00
+say hailey | We look like a girl group!
+goto sleep_s1
+#sleep_r01
+say gabby | Cozy queen.
+goto sleep_s1
+#sleep_r02
+say mya | LOL. Iconic, honestly.
+goto sleep_s1
+
+#sleep_s1
+choice Hailey tells a secret during truth or dare...
+> Promise to keep it forever | sleep+2 hearts+2 | sleep_r10
+> Change the subject to help her | sleep+1 hearts+1 | sleep_r11
+> Text it to someone | sleep-2 chaos+1 | sleep_r12
+#sleep_r10
+say hailey | I trust you guys SO much.
+goto sleep_s2
+#sleep_r11
+say mya | Smooth move. Thanks.
+goto sleep_s2
+#sleep_r12
+say hailey | How does EVERYONE know?!
+undo
+goto sleep_s2
+
+#sleep_s2
+choice 3 AM. Something creaks downstairs...
+> Investigate together with flashlights | sleep+2 hearts+2 | sleep_r20
+> Hide under the blankets | sleep+1 hearts+1 | sleep_r21
+> Prank them with a mask | sleep+0 | sleep_r22
+#sleep_r20
+say gabby | It was... your cat. We're FINE. Screaming.
+goto sleep_end
+#sleep_r21
+say mya | Don't. Make. A sound.
+goto sleep_end
+#sleep_r22
+say hailey | I'm never sleeping again.
+goto sleep_end
+
+#sleep_end
+if sleep>=5 | sleep_good
+ending ok | Not the End | Fun night... mostly. Pancakes fix everything.
+goto storyland
+#sleep_good
+bg FFE066
+ending good | Sleepover Queen | Best. Sleepover. Ever. You're all closer than ever!
+sticker sleepover_queen
+set hearts+5
+save
+goto storyland

@@ -1,0 +1,72 @@
+; ===== STORY: Small-Town Pageant =====
+
+char mama | Mama June-Belle | F1C9A5,E9C96B,F28CB9,E8C050,0,0,640
+char judge | Judge Harold | F1C9A5,D0D0D0,2B1B24,FFFFFF,1,1,330
+char caroline | Caroline | F1C9A5,E9C96B,FFFFFF,E8C050,0,0,880
+
+#pageant_start
+reset
+title Small-Town Pageant | pageant
+bond pageant | the judges
+bg FFE6F2
+say me | Miss Peach Blossom Pageant. My mom entered me. I didn't even know.
+say mama | Sugar, smile with ALL your teeth!
+say caroline | I've won six crowns. You're adorable though.
+
+#pageant_s0
+choice Talent portion!
+> Sing a Whitney song | pageant+2 hearts+2 | pageant_r00
+> Baton twirling | pageant+1 hearts+1 | pageant_r01
+> Tell knock-knock jokes | pageant+0 | pageant_r02
+#pageant_r00
+say judge | Goosebumps, young lady.
+goto pageant_s1
+#pageant_r01
+say mama | That's my baby!
+goto pageant_s1
+#pageant_r02
+say judge | ...Heh. Okay. Heh.
+goto pageant_s1
+
+#pageant_s1
+choice Interview question: 'What would you change in the world?'
+> Something real you care about | pageant+2 hearts+2 | pageant_r10
+> 'World peace' | pageant+1 hearts+1 | pageant_r11
+> 'More glitter' | pageant+0 | pageant_r12
+#pageant_r10
+say judge | Honest and thoughtful. Wonderful.
+goto pageant_s2
+#pageant_r11
+say caroline | Classic.
+goto pageant_s2
+#pageant_r12
+say judge | ...Noted.
+goto pageant_s2
+
+#pageant_s2
+choice Caroline's heel breaks right before her walk.
+> Give her your spare heels | pageant+2 hearts+2 | pageant_r20
+> Tell staff to help her | pageant+1 hearts+1 | pageant_r21
+> Walk ahead of her fast | pageant-2 chaos+1 | pageant_r22
+#pageant_r20
+say caroline | Why would you... thank you. Really.
+goto pageant_end
+#pageant_r21
+say mama | Good girl, sugar.
+goto pageant_end
+#pageant_r22
+say judge | We saw that.
+undo
+goto pageant_end
+
+#pageant_end
+if pageant>=5 | pageant_good
+ending ok | Not the End | Miss Congeniality! Everybody loved you.
+goto storyland
+#pageant_good
+bg FFE066
+ending good | Pageant Crown | Miss Peach Blossom {name}!! The crown is YOURS!
+sticker pageant_crown
+set hearts+5
+save
+goto storyland

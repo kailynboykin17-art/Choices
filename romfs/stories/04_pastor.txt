@@ -1,0 +1,75 @@
+; ===== STORY: Pastor's Daughter =====
+
+char pastor | Pastor Davis | 5A3622,140E10,2B1B24,FFFFFF,1,1,330
+char firstlady | Mama Davis | 5A3622,140E10,C9A8F0,E8C050,0,1,560
+char marcus | Marcus | 8D5A3B,140E10,7FB0E0,FFFFFF,0,1,420
+char kiara | Kiara | 8D5A3B,4A2A1C,FFE066,FF7EB3,0,2,900
+
+#pastor_start
+reset
+title Pastor's Daughter | pastor
+bond pastor | the church
+bg FFF4E0
+say me | Being the pastor's daughter means EVERYONE is watching. Everyone.
+say firstlady | Baby, wear your Sunday best. The whole church will see you sing the solo.
+say kiara | Girl. The new drummer, Marcus? He's been staring at you all service.
+
+#pastor_s0
+choice Choir rehearsal. You have the solo!
+> Sing from your heart | pastor+2 hearts+2 | pastor_r00
+> Add a little R&B run | pastor+1 hearts+1 | pastor_r01
+> Lip sync because you're nervous | pastor-1 chaos+1 | pastor_r02
+#pastor_r00
+say firstlady | My baby! The whole church was crying!
+goto pastor_s1
+#pastor_r01
+say kiara | The aunties are SCREAMING. In a good way.
+goto pastor_s1
+#pastor_r02
+say pastor | Sweetheart... the mic was off.
+undo
+goto pastor_s1
+
+#pastor_s1
+choice Marcus asks you to the youth group skate night.
+> Ask your dad first | pastor+2 hearts+2 | pastor_r10
+> Bring Kiara as a buddy | pastor+1 hearts+1 | pastor_r11
+> Sneak out to go | pastor-1 chaos+1 | pastor_r12
+#pastor_r10
+say pastor | ...He seems like a fine young man. Home by nine.
+goto pastor_s2
+#pastor_r11
+say kiara | Third wheel? Honored.
+goto pastor_s2
+#pastor_r12
+say firstlady | WHERE have you been, young lady?!
+undo
+goto pastor_s2
+
+#pastor_s2
+choice Your best friend Kiara is going through a hard time.
+> Stay up talking and pray with her | pastor+2 hearts+2 | pastor_r20
+> Bring her ice cream | pastor+1 hearts+1 | pastor_r21
+> Tell the prayer chain her business | pastor-1 chaos+1 | pastor_r22
+#pastor_r20
+say kiara | Thank you. Real friends show up.
+goto pastor_end
+#pastor_r21
+say kiara | Okay this helped a little ngl.
+goto pastor_end
+#pastor_r22
+say kiara | You told EVERYONE?!
+undo
+goto pastor_end
+
+#pastor_end
+if pastor>=5 | pastor_good
+ending ok | Not the End | Church gossip calmed down. Next Sunday's a new start.
+goto storyland
+#pastor_good
+bg FFE066
+ending good | Church Girl | The church voted you youth leader! And Marcus wrote you a song.
+sticker church_girl
+set hearts+5
+save
+goto storyland

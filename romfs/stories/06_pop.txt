@@ -1,0 +1,74 @@
+; ===== STORY: Pop Star Dreams =====
+
+char manager | Manager Max | F1C9A5,140E10,2B1B24,FFE066,1,1,380
+char lexi | Lexi Starr | F1C9A5,F28CB9,F69EC4,FFE066,0,0,900
+char dj | DJ Remi | 8D5A3B,140E10,7FB0E0,FFFFFF,1,1,460
+
+#pop_start
+reset
+title Pop Star Dreams | pop
+bond pop | the charts
+bg C9A8F0
+say me | I posted one song online and now it has a million views?!
+say manager | Kid, I'm Max. I can make you the next big thing. Sign here!
+say lexi | Ugh. Another new girl. The charts only have room for ONE princess.
+
+#pop_s0
+choice Read the contract first?
+> Get your mom to read it | pop+2 hearts+2 | pop_r00
+> Sign it right away! | pop-1 chaos+1 | pop_r01
+> Ask other artists about Max | pop+1 hearts+1 | pop_r02
+#pop_r00
+say manager | ...Okay, okay, I'll lower my cut. Smart cookie.
+goto pop_s1
+#pop_r01
+say manager | Great! Oh, by the way, I own your name now.
+undo
+goto pop_s1
+#pop_r02
+say dj | He's alright. Just watch the fine print.
+goto pop_s1
+
+#pop_s1
+choice Your first music video vibe:
+> Glitter + butterflies + rollerskates | pop+2 hearts+2 | pop_r10
+> Dark and edgy | pop+1 hearts+1 | pop_r11
+> Copy Lexi's video | pop-1 chaos+1 | pop_r12
+#pop_r10
+say dj | This is giving 2003 ICON.
+goto pop_s2
+#pop_r11
+say manager | Bold. Could work.
+goto pop_s2
+#pop_r12
+say lexi | Lol she's literally ME.
+undo
+goto pop_s2
+
+#pop_s2
+choice Lexi gets booed at an award show...
+> Cheer for her on stage | pop+2 hearts+2 | pop_r20
+> Stay out of it | pop+1 hearts+1 | pop_r21
+> Laugh on camera | pop-2 chaos+1 | pop_r22
+#pop_r20
+say lexi | ...Why are you being nice? Wanna do a duet?
+goto pop_end
+#pop_r21
+say manager | Professional. Good.
+goto pop_end
+#pop_r22
+say dj | Babe, that clip is EVERYWHERE now.
+undo
+goto pop_end
+
+#pop_end
+if pop>=5 | pop_good
+ending ok | Not the End | One hit wonder... for now. The next album will slay.
+goto storyland
+#pop_good
+bg FFE066
+ending good | Pop Princess | Number one single! And a duet with Lexi?! POP PRINCESS {name}!
+sticker pop_princess
+set hearts+5
+save
+goto storyland

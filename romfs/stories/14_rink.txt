@@ -1,0 +1,73 @@
+; ===== STORY: Roller Rink Royalty =====
+
+char roxy | Roxy | 5A3622,F28CB9,F69EC4,FFE066,0,2,920
+char dj2 | DJ Spinz | 8D5A3B,140E10,2B1B24,FFFFFF,1,1,400
+char skate | Skater Sam | F1C9A5,4A2A1C,7FB0E0,FFFFFF,0,1,460
+
+#rink_start
+reset
+title Roller Rink Royalty | rink
+bond rink | the rink
+bg 8EE0C8
+say me | Friday night at the Starlight Roller Rink. Disco ball spinning.
+say roxy | The rink's closing unless we win the Skate-Off. You in?
+say dj2 | Song request? I got everything from Destiny's Child to Britney.
+
+#rink_s0
+choice Pick your skates:
+> White with pink pom poms | rink+2 hearts+2 | rink_r00
+> Rental skates (they smell) | rink+0 | rink_r01
+> Light-up wheels | rink+2 hearts+2 | rink_r02
+#rink_r00
+say roxy | You look like a roller DOLL.
+goto rink_s1
+#rink_r01
+say skate | Brave.
+goto rink_s1
+#rink_r02
+say dj2 | Now THAT'S a look!
+goto rink_s1
+
+#rink_s1
+choice Learn a trick?
+> Practice spins all week | rink+2 hearts+2 | rink_r10
+> Learn to skate backwards | rink+1 hearts+1 | rink_r11
+> Try a jump with no practice | rink-1 chaos+1 | rink_r12
+#rink_r10
+say roxy | You nailed the triple spin!
+goto rink_s2
+#rink_r11
+say skate | Not bad, rookie.
+goto rink_s2
+#rink_r12
+say roxy | Ice. Pack. NOW.
+undo
+goto rink_s2
+
+#rink_s2
+choice Skate-Off song:
+> A Y2K pop anthem | rink+2 hearts+2 | rink_r20
+> A slow jam | rink+1 hearts+1 | rink_r21
+> Total silence (dramatic) | rink-1 chaos+1 | rink_r22
+#rink_r20
+say dj2 | The whole rink is singing along!
+goto rink_end
+#rink_r21
+say roxy | Kinda romantic, kinda risky.
+goto rink_end
+#rink_r22
+say skate | Uh... was that on purpose?
+undo
+goto rink_end
+
+#rink_end
+if rink>=5 | rink_good
+ending ok | Not the End | Second place... but the rink is staying open thanks to donations!
+goto storyland
+#rink_good
+bg FFE066
+ending good | Roller Queen | You won the Skate-Off! The rink is saved! ROLLER QUEEN!
+sticker roller_queen
+set hearts+5
+save
+goto storyland
