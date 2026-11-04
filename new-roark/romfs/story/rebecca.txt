@@ -1,0 +1,138 @@
+title Rebecca Rabbit - Chapter 1: Number One
+# stats: climb (getting to Peppa's #1 spot), roots (being yourself)
+
+bg kitchen Rabbit House - Kitchen
+show mrsrabbit right
+show rosie left
+mrsrabbit: Filha, você vai jantar em casa hoje? Your tia is calling from Brazil tonight.
+rebecca: Sim, mãe. Maybe. Depends on Peppa.
+mrsrabbit: Everything depends on Peppa lately. And that scratch on your ear. You still won't tell me.
+rebecca: I fell, Mãe.
+narr: You did not fall. You got caught. By Candy Cat. At the mall. With her boyfriend.
+rosie: Becca, can you do my hair like yours?
+choice
+> Do Rosie's hair | hair | roots +1
+> "No time, baby. Tomorrow." | notime | climb +1
+endchoice
+
+label hair
+You braid it the way Tia used to braid yours in São Paulo. Rosie looks in the mirror like she's seeing a celebrity.
+rosie: I look like YOU.
+narr: Something warm and strange happens in your chest.
+goto school
+
+label notime
+rebecca: Tomorrow, I promise.
+narr: Rosie's ears droop. You've said tomorrow a lot this month.
+goto school
+
+label school
+hide all
+bg hallway Roark High - Main Hallway
+show peppa center
+show suzy right
+show rebecca_b left
+narr: Peppa. Suzy. And you, one step behind, where you always are.
+suzy: Becca, you're standing on my side again.
+rebecca: There's no sides, Suzy. It's a hallway.
+suzy: There's always sides with you.
+narr: Peppa doesn't even notice. Suzy's been her best friend since they were babies. You've been trying to get that spot since freshman year.
+choice
+> Whisper to Peppa that Suzy's been talking about her | gossip | climb +2
+> Let it go | letgo | roots +1
+endchoice
+
+label gossip
+rebecca: P. Don't get mad. But Suzy said you only got the crown because of your mom.
+peppa: ...She said WHAT?
+narr: Suzy never said that. You both know it. Only one of you knows it.
+set lie 1
+goto emily
+
+label letgo
+You let it go. For now. You smile at Suzy. She doesn't smile back.
+goto emily
+
+label emily
+hide all
+bg cafeteria Roark High - Cafeteria
+show emily right
+show kylie left
+emily: Becca, you're in my seat.
+rebecca: Is it? I didn't see your name on it. Must be all the jewelry blocking it.
+kylie: Ooh.
+narr: Emily's always got something to say back. That's why you go after her. She's the only one at the table who doesn't need you.
+choice
+> Keep going. Make it hurt. | mean | climb +1
+> Stop. Move seats. | move | roots +1
+> [5] Actually apologize to Emily, quietly | sorry | roots +3
+endchoice
+
+label mean
+rebecca: Your dad still guarding the mayor's car? Must be nice having one parent around.
+narr: The table goes silent. Even Kylie looks away. Emily gets up and leaves without a word.
+narr: You won. Your stomach hurts.
+goto peppa
+
+label move
+You move. Emily sits down. Neither of you says anything. It's not peace, but it's not war.
+goto peppa
+
+label sorry
+rebecca: Em. I'm... sorry. For all the stuff I keep saying. I don't even know why I do it.
+emily: ...Yes you do.
+rebecca: Yeah. I do. Because you don't care what Peppa thinks and I care too much.
+narr: Emily stares at you like you grew a second head. Then she slides you half her fries.
+set emily 1
+goto peppa
+
+label peppa
+hide all
+bg street New Roark - Outside Roark High
+show peppa center
+peppa: Becca. Walk with me.
+narr: Just you. Not Suzy. Your whole body goes electric.
+peppa: Simon. The mall. Candy. Was it worth it?
+choice
+> "Of course not. I'd do anything to take it back." | regret | roots +2
+> "Simon liked me first, if you think about it." | spin | climb +2
+endchoice
+
+label regret
+rebecca: No. It wasn't worth it. I wanted somebody to pick me first. Just once.
+peppa: ...That's the most honest thing you've ever said to me.
+narr: She doesn't make you her number one. But she links her arm through yours the whole way to the subway.
+goto ending
+
+label spin
+rebecca: Honestly? He liked me first. She just got to him faster.
+peppa: Hm.
+narr: Peppa doesn't say anything else. You can't tell if you just won or lost.
+goto ending
+
+label ending
+hide all
+bg livingroom Rabbit House - Living Room
+if lie >= 1 goto lie
+if roots >= 3 goto call
+You get home after dinner. The call with Tia already ended.
+reward 5
+end
+
+label lie
+phone: Suzy - "peppa just called screaming at me about something I NEVER SAID. i know it was u becca."
+narr: You stare at the text for an hour. You don't answer it.
+reward 5
+end
+
+label call
+You make it home in time. Tia's face fills the laptop screen, all your cousins yelling over each other.
+narr: For an hour, you don't have to be anybody's number one. You're just Becca.
+if emily >= 1 goto em
+reward 6
+end
+
+label em
+phone: Emily - "this doesn't mean we're friends. but thanks."
+reward 7
+end

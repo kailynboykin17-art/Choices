@@ -1,0 +1,160 @@
+title Candy Cat - Chapter 1: Scrapbook
+# stats: calm (handling the anger), answers (about your dad)
+
+bg bedroom Cat Apartment - Candy's Room
+Your scrapbook is open on the bed. Beaches in Spain. Ticket stubs. A Polaroid of you and Mom on a ferry.
+And twelve pages of Simon. You haven't been able to look at those since the mall.
+narr: The mall. Simon and Rebecca by the fountain. His paw on her face. Then a lot of yelling, a lot of security guards, and one very long weekend in juvie before Mom got you out.
+show mscat right
+mscat: Mija, therapy at four. Don't forget. And don't skip it again.
+candy: I didn't skip it. I was... late. For an hour.
+mscat: Candy.
+candy: I'm going, Mamá.
+hide all
+You open Roarstagram. Your page is still full of him.
+post candy post_candy1 him >>>
+post candy post_candy2 home is a person
+choice
+> Archive every post with Simon | archive | calm +2
+> Leave them up. Let him see what he lost. | leave | answers +1
+> Delete them. All of them. Right now. | delete
+endchoice
+
+label archive
+You archive them one by one. Not deleted. Just... put away. Like a box in a closet.
+narr: Dr. Reyes would call that a boundary. You call it not having to see his face every time you post a sunset.
+goto school
+
+label leave
+You leave them up. Let him scroll. Let him feel it.
+narr: Two of your followers comment fire emojis. You don't know if it's support or chaos. Probably both.
+goto school
+
+label delete
+Delete. Delete. Delete. Delete.
+narr: It takes eleven seconds to erase eight months. Your paws are shaking when you put the phone down.
+goto school
+
+label school
+hide all
+bg hallway Roark High - Main Hallway
+Rebecca walks past. She still has a little scratch healing by her ear. She sees you and her whole body flinches.
+show rebecca_b left
+rebecca: ...Hey, Candy.
+narr: Your claws come out before you even think about it. You can feel your heartbeat in your ears.
+choice
+> Count backwards from ten like Dr. Reyes taught you | count | calm +2
+> Say something sharp | sharp
+endchoice
+
+label count
+Ten. Nine. Eight. The hallway gets quieter. Seven. Six. Your claws go back in.
+candy: Don't talk to me, Rebecca. That's all. Just don't.
+rebecca: ...Okay.
+narr: That felt weird. Good weird.
+goto lunch
+
+label sharp
+candy: Hey, Rebecca. Nice scratch. Want a matching one?
+rebecca: I said I was sorry!
+candy: You said it to Peppa. Not to me.
+narr: She hurries off. You won. It doesn't feel like winning.
+goto lunch
+
+label lunch
+hide all
+bg cafeteria Roark High - Cafeteria
+show wendy left
+show molly right
+wendy: Simon's at the vending machine. Looking at this table. Like a sad little squirrel.
+molly: He's been trying to say sorry for weeks. Gerald says he's actually really messed up about it.
+candy: Good.
+molly: Candy.
+candy: What? I'm allowed to say good.
+show simon center
+simon: Candy. Can I- two minutes. Please.
+choice
+> Give him two minutes | listen | calm +1
+> "No." | no | answers +1
+endchoice
+
+label listen
+simon: I was stupid. I was so stupid. I had the best thing and I did that anyway. I don't even have a reason. I'm not gonna make one up.
+candy: ...At least you're not lying this time.
+simon: I'm done lying. To you, to me, to everybody.
+narr: It doesn't fix anything. But it's the first apology that didn't sound like an excuse.
+goto session
+
+label no
+candy: No.
+simon: ...Okay. That's fair.
+narr: He walks away. Wendy bumps your shoulder with hers. Molly slides you her cookie. Nobody says anything. They don't have to.
+goto session
+
+label session
+hide all
+bg office Dr. Reyes - Therapy Office
+teacher: So, Candy. Anything happen this week you want to talk about?
+choice
+> Talk about Rebecca in the hallway | hallway | calm +1
+> Talk about your dad | dad | answers +2
+> [5] Show her the empty Dad page in the scrapbook | page | answers +3
+endchoice
+
+label hallway
+candy: I saw her. I wanted to hurt her. I didn't.
+teacher: Then that's the story I want to hear. The part where you didn't.
+teacher: Can I point something out? Every week you come in here talking about Molly's problems. Wendy's problems. Who's coming for who. When do we get to talk about Candy?
+candy: ...I'm good at fixing other people's stuff. Mine doesn't come with instructions.
+goto home
+
+label dad
+candy: I don't even know my dad's name. Mom made a deal with him. Stay out of each other's lives.
+teacher: Do you think that's connected? The mall. Simon. Feeling like people leave.
+candy: ...Can we not do this today.
+teacher: We can do it next week.
+goto home
+
+label page
+You open the scrapbook to the empty page. Dad. In a seven-year-old's handwriting.
+teacher: You've kept this page empty for ten years.
+candy: I keep thinking someone will fill it. Like if I leave room, it'll happen.
+set page 1
+goto home
+
+label home
+hide all
+bg livingroom Cat Apartment - Living Room
+show mscat center
+mscat: How was therapy?
+if answers >= 2 goto ask
+candy: Fine. Good, actually.
+mscat: Good? That's new.
+goto ending
+
+label ask
+candy: Mamá. Who is he? My dad.
+narr: She goes very still. Like a lawyer who just heard the wrong question.
+mscat: Candy. Not tonight.
+candy: Then when?
+mscat: ...After the election.
+set election 1
+goto ending
+
+label ending
+if calm >= 4 goto steady
+You fall asleep with the scrapbook on your chest.
+reward 5
+end
+
+label steady
+You glue the ferry Polaroid onto a fresh page. Under it you write - Good day. No fights.
+if election >= 1 goto tv
+reward 6
+end
+
+label tv
+tv: ...Mayor Hamilton Hog thanked his top donors tonight at a private dinner on the Upper West Side...
+narr: A man in the back turns away from the camera. Your mom turns off the TV fast. Too fast.
+reward 7
+end

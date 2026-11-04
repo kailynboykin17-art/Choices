@@ -1,0 +1,136 @@
+title Simon Squirrel - Chapter 1: Second Chances
+# stats: hype (hiding behind being everyone's coach), honest (owning what you did)
+
+bg kitchen Iora-Squirrel House - Woodland Heights
+show mrsquirrel right
+show samantha left
+mrsquirrel: Simon! Need you on the truck after school. Big oak in the park, city contract.
+simon: Pops, I'm training Pedro after school.
+samantha: Training. He's coaching everyone else's life so he doesn't have to look at his own.
+simon: Sam.
+samantha: What? You cheated on Candy Cat. With REBECCA. The whole school knows. Candy literally fought you in a mall.
+narr: Pops puts his coffee down. Slow. You've never told him the whole story.
+mrsquirrel: Is that true, lad?
+choice
+> Tell him the truth | truth | honest +2
+> "It's complicated, Pops." | complicated | hype +1
+endchoice
+
+label truth
+simon: Yeah. It's true. I messed up. Bad.
+narr: You wait for him to yell. He doesn't. He just looks at you for a long time.
+mrsquirrel: I did worse than that, once. Before your mother. Before you. I ran from everything I broke.
+mrsquirrel: Don't run, son. That's all I'll say. Don't run.
+goto school
+
+label complicated
+simon: It's complicated, Pops.
+mrsquirrel: It usually isn't. It's usually just hard.
+narr: He picks his coffee back up. Somehow that's worse than yelling.
+goto school
+
+label school
+hide all
+bg street New Roark - Outside Roark High
+You check Roarstagram on the walk. Old habit. Candy's page is still there.
+post candy post_candy3 sunday walk. he carried my bag the whole time (he complained the whole time)
+narr: You remember that day. You complained because the bag was heavy. She laughed so hard she cried. You'd carry that bag a thousand miles now.
+post candy post_candy4 night out w my fav person. dont call us
+choice
+> Like the post | like | hype +1
+> Close the app | close | honest +1
+endchoice
+
+label like
+You tap the heart before you can stop yourself. Then you panic and un-like it. Then you realize she probably got the notification anyway.
+simon: I'm an idiot. I'm an idiot with thumbs.
+goto field
+
+label close
+You close the app. Some things aren't yours to look at anymore.
+goto field
+
+label field
+hide all
+bg gym Roark High - Football Field
+show pedro center
+pedro: I can't feel my legs.
+simon: That means it's working, hermano!
+pedro: That's not what that means. And you look like you didn't sleep.
+choice
+> Push him harder so you don't have to talk | harder | hype +2
+> Admit you're not okay | talk | honest +1
+endchoice
+
+label harder
+simon: Ten more! Coach is watching! Feel the destiny!
+narr: Pedro does ten more. Coach nods. You feel nothing.
+goto lunch
+
+label talk
+simon: I'm not okay, man. I keep telling everybody how to get over a breakup and I'm the one who caused mine.
+pedro: ...Yeah. You kind of did.
+simon: Wow. Okay.
+pedro: But you're also the one who got me out of bed after Peppa. So. You're not a villain. You just did a villain thing.
+goto lunch
+
+label lunch
+hide all
+bg cafeteria Roark High - Cafeteria
+narr: Two tables. Candy, Wendy and Molly on one side. Peppa's crew on the other. Rebecca sitting at the end of it, not looking at you.
+show candy left
+show rebecca_b right
+choice
+> Go apologize to Candy. Properly. | candy | honest +2
+> Go talk to Rebecca | becca | hype +1
+> [5] Write Candy a letter instead. No audience. No pressure. | letter | honest +3
+endchoice
+
+label candy
+show simon center
+simon: Candy. Two minutes. I'm not here to get you back. I'm here to say I'm sorry. With no excuses.
+candy: You have one minute.
+simon: Then it's one sentence. I was a coward, and you didn't deserve any of it.
+narr: She looks at you a long time. Then she goes back to her lunch. But she didn't say no.
+goto park
+
+label becca
+hide candy
+simon: Becca. We gotta stop pretending this didn't happen.
+rebecca: Keep your voice down. Peppa's RIGHT there.
+narr: She doesn't care about what happened. She cares about who's watching. You realize that's always been the difference.
+goto park
+
+label letter
+You write it in study hall. Three pages. No excuses. You fold it into her locker without signing it.
+narr: She'll know it's you. Nobody else spells definitely that wrong.
+set letter 1
+goto park
+
+label park
+hide all
+bg park Woodland Heights Park
+show mrsquirrel center
+mrsquirrel: You ever wonder why I do this job?
+simon: Because nobody else would hire you. You told me.
+mrsquirrel: That's how it started. Now I do it because it's honest. You cut the dead branches so the tree can keep growing.
+narr: Dead branches. You think about the lies. About who you were at that fountain.
+goto ending
+
+label ending
+if honest >= 4 goto grow
+simon: Tomorrow. Five A.M. Pedro. Destiny.
+reward 5
+end
+
+label grow
+You look up at the oak. Half-trimmed. Still standing. Still growing.
+simon: I'm gonna be better. Not for her. Just... better.
+if letter >= 1 goto reply
+reward 6
+end
+
+label reply
+phone: Unknown - "you spelled definitely wrong 4 times. still mad. but i read it."
+reward 7
+end

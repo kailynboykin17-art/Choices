@@ -1,0 +1,136 @@
+title Peppa Pig - Chapter 1: Worthy
+# stats: baddie (the crown), real (the real Peppa)
+
+bg bedroom Pig House - Peppa's Room
+Lashes. Gloss. Silver boots. The ring light makes everything look like a magazine.
+A Baddie Haven Academy brochure is taped to your mirror. Mom went there. Grandma went there. You WILL go there.
+Down the hall, baby Evie has been crying since four A.M.
+show mrspig right
+mrspig: Peppa, sweetheart, can you hold Evie for two minutes? I need to shower. Please.
+peppa: I'm doing my lashes, Mom.
+mrspig: Two minutes, baby.
+choice
+> Hold Evie | evie | real +1
+> "George can do it." | george | baddie +1
+endchoice
+
+label evie
+show evie left
+You hold her like she's made of glass. She stops crying. She grabs your necklace and stares at you like you're the most interesting thing in the world.
+peppa: ...Don't get used to this. I'm very busy and important.
+narr: Evie drools on your top. You let her.
+goto car
+
+label george
+peppa: George can do it. He's not doing anything.
+show george left
+george: I'm doing a LOT. I have a sneaker deal at eight.
+mrspig: Peppa.
+peppa: Fine. FINE.
+narr: You hold her for exactly two minutes. You don't admit she stopped crying the second she was in your arms.
+goto car
+
+label car
+hide all
+bg hallway Roark High - Main Hallway
+show suzy right
+show rebecca left
+suzy: Did you see Wendy's outfit? She's dressing like she won something.
+rebecca: Peppa, I saved you a seat at lunch. Right next to me. Like always.
+suzy: Like always? Since when is it like always?
+rebecca: Since you were too busy fighting Wendy to show up, Suze.
+narr: Suzy and Rebecca. Your best friend since diapers and your most loyal Baddie. Lately they look at each other like knives.
+choice
+> "Both of you. Stop. Now." | stop | baddie +1
+> Side with Suzy | suzy | real +1
+> Side with Rebecca | becca | baddie +1
+endchoice
+
+label stop
+peppa: Both of you. Stop. We are not doing this in public. We are BADDIES.
+suzy: Tell that to her.
+rebecca: I didn't do anything!
+narr: Rebecca's voice is sweet. Too sweet. You file that away.
+goto gerald
+
+label suzy
+peppa: Suzy sits with me. She always has. Becca, you're on my left.
+rebecca: ...Of course. Whatever you want, P.
+narr: Rebecca smiles. Her ears don't.
+set suzyside 1
+goto gerald
+
+label becca
+peppa: Becca's been showing up. You haven't, Suze.
+suzy: Wow. Okay. Noted.
+narr: Suzy walks off. Rebecca slides her arm through yours like she's been waiting years for this.
+set beccaside 1
+goto gerald
+
+label gerald
+hide all
+bg gym Roark High - Gym
+show kylie left
+show peggi right
+kylie: Peppa. Gerald's at the court. Alone. Molly's at the bookstore.
+peggi: Just saying. Just reporting. For the group chat.
+narr: Gerald Kameelperd. Tall. Funny. And annoyingly, extremely, publicly in love with Molly Mole.
+choice
+> Walk over there anyway | flirt | baddie +2
+> "He's taken. I don't chase." | taken | real +2
+> [5] Go talk to Pedro instead. You owe him one. | pedro | real +3
+endchoice
+
+label flirt
+hide all
+show gerald center
+peppa: Nice shot.
+gerald: Thanks, Peppa. Molly says my form is getting better.
+peppa: Molly says a lot of things.
+gerald: Yeah. She does. I like all of them.
+narr: He's not even being mean. That's the worst part. He's just loyal. You walk away with your face burning.
+goto home
+
+label taken
+peppa: He's taken. And I don't chase. I get chased.
+kylie: ICONIC.
+peggi: Putting that in the group chat.
+goto home
+
+label pedro
+hide all
+show pedro center
+You find him by the bleachers. Spots uncovered. He looks... good, actually.
+peppa: Pedro. I never told you why. When I ended it. You deserved a reason.
+pedro: ...Do you have one?
+peppa: I didn't know how to be loved by someone who was nice to me. That's the reason. It's stupid.
+pedro: It's not stupid. It's just sad.
+narr: You both sit with that. It's the most honest you've been since the eighth grade.
+set pedro 1
+goto home
+
+label home
+hide all
+bg livingroom Pig House - Living Room
+if real >= 3 goto nursery
+Evie's asleep. Mom's asleep on the couch next to her. You walk past them both and close your door.
+peppa: Baddie Haven Academy. Applications open next month. Then she'll see.
+reward 5
+end
+
+label nursery
+show mrspig right
+show evie left
+mrspig: You held her this morning. She hasn't stopped looking for you all day.
+peppa: She's a baby, Mom. She looks at ceiling fans.
+mrspig: She looks at YOU like I used to look at you. When you were that little. Before I messed everything up.
+narr: You don't say it's okay. But you sit down on the couch. And you stay.
+if pedro >= 1 goto pedrotext
+reward 6
+end
+
+label pedrotext
+phone: Pedro - "thanks for today. for real. good luck with everything p"
+narr: P. He hasn't called you that in months.
+reward 7
+end

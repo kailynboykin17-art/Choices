@@ -1,0 +1,133 @@
+title Emily Elephant - Chapter 1: Respect My Name
+# stats: bold (standing up for yourself), truth (about Mom)
+
+bg livingroom Elephant Apartment - Queens
+show mrelephant right
+mrelephant: Em, I'm working the Hog rally Saturday. Long day. Grandma's got dinner.
+emily: You've been working for that campaign for a year and you still won't tell me why.
+mrelephant: It's a good job, baby.
+emily: It's a job for a guy you can't stand. I see your face when he's on TV.
+narr: He doesn't answer. He just straightens his tie in the mirror like a man going to war.
+choice
+> Ask about Mom | mom | truth +2
+> Let it go | letgo
+endchoice
+
+label mom
+emily: Is this about Mom?
+narr: The tie stops moving.
+mrelephant: Everything I do is about your mom. And about you. That's all I can say right now.
+goto school
+
+label letgo
+emily: Okay. Be careful, Daddy.
+mrelephant: Always.
+goto school
+
+label school
+hide all
+bg hallway Roark High - Main Hallway
+Peppa scooped you into the group freshman year. You never figured out why. You just knew you wanted to fit.
+Lately, fitting means holding everybody's bags and taking everybody's blame.
+show peppa center
+show rebecca_b left
+show suzy right
+peppa: Em. Somebody told the principal we were skipping third period. Somebody snitched.
+rebecca: It's always the quiet ones, P.
+suzy: Emily, did you say something?
+narr: You didn't. You were in the bathroom. Rebecca was the one talking to the principal. You SAW her.
+choice
+> Say nothing. Take the heat like always. | quiet
+> "It wasn't me. Ask Rebecca." | rebecca | bold +2
+> [5] Pull out your phone. You took a picture of her at the office. | proof | bold +3
+endchoice
+
+label quiet
+emily: ...I'm sorry. I don't know.
+peppa: Ugh. Whatever. Just be more careful, Em.
+narr: Rebecca smiles at you. The kind of smile that knows it got away with something.
+goto lunch
+
+label rebecca
+emily: It wasn't me. Ask Rebecca. She was at the office.
+rebecca: Excuse me?
+suzy: ...Wait. Becca, were you?
+narr: For once, nobody's looking at you. They're looking at her.
+goto lunch
+
+label proof
+You hold up your phone. Rebecca, at the principal's office window. Timestamp and everything.
+emily: Before anybody blames me again. Third period. Ten-fourteen.
+peppa: ...Rebecca?
+rebecca: I can explain-
+suzy: Oh, I KNEW it.
+narr: Kylie mouths wow at you. Peggi starts typing in the group chat. You did that. Quiet little Emily did that.
+set proof 1
+goto lunch
+
+label lunch
+hide all
+bg cafeteria Roark High - Cafeteria
+show kylie left
+show peggi right
+kylie: Okay, Em. Who are you today?
+peggi: New Emily. Respect it. I'm posting about it.
+emily: Please don't-
+post peggi none emily elephant said "respect my name" and honestly?? we have to.
+emily: I didn't even say that!
+peggi: You said it with your eyes.
+choice
+> Lean into it. Own the moment. | own | bold +1
+> Ask her to delete it | delete
+endchoice
+
+label own
+emily: ...Fine. Respect my name.
+kylie: SHE SAID IT.
+goto library
+
+label delete
+emily: Peggi, delete it. Please.
+peggi: Ugh. Fine. But I'm screenshotting it first. For history.
+goto library
+
+label library
+hide all
+bg classroom Roark High - History
+teacher: For your project, research a moment in New Roark history. Use the public news archive.
+narr: Public news archive. Your dad on the news, sixteen years ago. Holding a sign with Mom's face on it.
+choice
+> Look her up | lookup | truth +2
+> Pick a different topic | different
+endchoice
+
+label lookup
+You search her name. Hasumati Elephant. Missing. The photo is grainy, but you can see her smile. It's yours.
+narr: In the corner of one article there's a detail you've never noticed. A witness saw a black SUV. Plates belonging to a private security firm.
+set suv 1
+goto ending
+
+label different
+You pick the subway system. It's safe. It's boring. You can't stop thinking about the other tab you didn't open.
+goto ending
+
+label ending
+hide all
+bg bedroom Elephant Apartment - Emily's Room
+In your jewelry box there's a gold ring. Dad found it on the apartment floor that day. He gave it to you on your thirteenth birthday.
+if bold >= 3 goto vow
+emily: Maybe tomorrow I'll say something.
+reward 5
+end
+
+label vow
+You put it on. It fits now. It didn't used to.
+emily: No more being everybody's scapegoat. Not at school. Not in this city.
+if truth >= 3 goto mama
+reward 6
+end
+
+label mama
+emily: And I'm gonna find out what happened to you, Mama. Whatever it takes.
+reward 7
+end

@@ -1,0 +1,127 @@
+title Pedro Pony - Chapter 1: Spots
+# stats: confidence, grades
+
+bg bedroom Pony House - Pedro's Room
+Your alarm goes off for the fifth time. Danny is already up, quietly reading your manga.
+Your concealer is still on the dresser. You haven't used it since the breakup.
+choice
+> Leave your spots uncovered | spots | confidence +1
+> Cover them up, just for today | cover
+endchoice
+
+label spots
+You look in the mirror. Spots and all. You look like... you.
+pedro: Okay. Okay. This is fine.
+goto breakfast
+
+label cover
+You cover them up. Habit. It doesn't make you feel better. It never did.
+goto breakfast
+
+label breakfast
+bg kitchen Pony House - Kitchen
+show mrspony right
+show patricia left
+mrspony: Mijo, eat. You have the chemistry test Friday.
+patricia: And tryouts Thursday. Simon told everyone you're trying out for football.
+pedro: I said maybe!
+mrspony: Football? You?
+narr: She's not mean about it. She's just surprised. Somehow that's worse.
+choice
+> "Yeah. Me. I'm doing it." | yes | confidence +2
+> "It's just an idea, Mom." | idea
+endchoice
+
+label yes
+pedro: Yeah. Me. I'm doing it.
+mrspony: ...Then you do it all the way. Ponys don't do anything halfway.
+patricia: Ugh, now she's gonna come to every game with a sign.
+goto school
+
+label idea
+pedro: It's just an idea. I'll probably just study.
+mrspony: Studying is good too, baby.
+narr: Patricia rolls her eyes at you so hard you can hear it.
+goto school
+
+label school
+hide all
+bg classroom Roark High - Chemistry
+show molly right
+molly: Pedro! Study group after school? Library? I'm bringing snacks.
+pedro: Molly, you're a lifesaver.
+molly: I know. Also, did you hear Emily exposed Rebecca in front of the whole hallway?
+pedro: Emily? Quiet Emily?
+molly: New Emily. Respect her name.
+hide all
+bg gym Roark High - Football Field
+show simon left
+simon: Pony! Thursday. You. Me. Coach. Destiny.
+pedro: Simon, I've never even caught a football.
+simon: That's why I brought one! Go long!
+choice
+> Go long | catch | confidence +1
+> "I have to go to the library." | library | grades +1
+> [5] Ask Simon to train you every morning before school | train | confidence +3
+endchoice
+
+label catch
+You run. You trip. You somehow catch it on your face.
+simon: THAT'S A CATCH. That counts.
+pedro: My nose is bleeding.
+simon: That's the price of glory, hermano.
+goto night
+
+label library
+pedro: I promised Molly. Study group.
+simon: Respect. Brains AND brawn. We'll get the brawn later.
+goto night
+
+label train
+pedro: Will you train me? Like, every morning?
+simon: Bro. BRO. I've been waiting my whole life for someone to ask me that.
+narr: He hugs you so hard you hear your back crack.
+set trainer 1
+goto night
+
+label night
+bg rooftop Pony House - Rooftop
+show danny right
+danny: Saw you at the field.
+pedro: You saw me catch a ball with my face.
+danny: Still caught it.
+choice
+> Ask Danny if he's okay | ask | confidence +1
+> Ask Danny to help you study | study | grades +1
+endchoice
+
+label ask
+pedro: Are you okay? Like, actually? There's been a black car outside the store.
+danny: ...You noticed that?
+pedro: I notice everything. I'm a nerd.
+danny: Don't worry about it.
+narr: Which is exactly what someone says when you should worry about it.
+goto ending
+
+label study
+danny: Fine. Hand me the flashcards.
+narr: He gets every answer right without looking. You decide not to ask why.
+goto ending
+
+label ending
+if confidence >= 3 goto proud
+pedro: One step at a time.
+reward 5
+end
+
+label proud
+You look in the window's reflection. Spots, nose bandage, and all.
+pedro: Okay, Pedro. Thursday.
+if trainer >= 1 goto alarm
+reward 6
+end
+
+label alarm
+phone: Simon - "5AM. FIELD. BRING WATER. AND HEART. MOSTLY WATER."
+reward 7
+end
