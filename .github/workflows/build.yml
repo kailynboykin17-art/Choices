@@ -8,18 +8,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install makerom + bannertool
-        run: |
-          apt-get update && apt-get install -y wget unzip
-          wget -q https://github.com/3DSGuy/Project_CTR/releases/download/makerom-v0.18.4/makerom-v0.18.4-ubuntu_x86_64.zip -O mr.zip
-          unzip -o mr.zip -d /usr/local/bin && chmod +x /usr/local/bin/makerom
-          wget -q https://github.com/diasurgical/bannertool/releases/download/1.2.0/bannertool.zip -O bt.zip
-          unzip -o bt.zip -d bt && cp bt/linux-x86_64/bannertool /usr/local/bin/ && chmod +x /usr/local/bin/bannertool
-
+      # 1) The game itself. Nothing below can stop this from building.
       - name: Build 3DSX
         run: make
 
+      # 2) Extra tools for the .cia (optional, retried if a download hiccups)
+      - name: Install makerom + bannertool
+        id: tools
+        continue-on-error: true
+        run: |
+          apt-get update && apt-get install -y wget unzip
+          wget -q --tries=3 --retry-connrefused https://github.com/3DSGuy/Project_CTR/releases/download/makerom-v0.18.4/makerom-v0.18.4-ubuntu_x86_64.zip -O mr.zip
+          unzip -o mr.zip -d /usr/local/bin && chmod +x /usr/local/bin/makerom
+          wget -q --tries=3 --retry-connrefused https://github.com/diasurgical/bannertool/releases/download/1.2.0/bannertool.zip -O bt.zip
+          unzip -o bt.zip -d bt && cp bt/linux-x86_64/bannertool /usr/local/bin/ && chmod +x /usr/local/bin/bannertool
+
       - name: Build CIA
+        if: steps.tools.outcome == 'success'
         continue-on-error: true
         run: make cia
 
