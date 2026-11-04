@@ -41,6 +41,7 @@ choice @Pick a life, {name}. Turn to any page.
 > Beauty Salon Boss ~ Pink chairs, your name on the door, a rival salon. | | salon_start
 > College Freshman ~ Your own dorm, your own rules, your own laundry. | | college_start
 > Witchy Girl ~ Sweet sixteen and suddenly magic. Midnight talks. | | witch_start
+> Campus Hearts ~ Seven guys. One campus. Choose your path. | | hearts_start
 > The Boutique ~ Spend your hearts on velour, pearls and second chances. | | land_shop
 > Collected Moments ~ Your scrapbook of best endings. | | land_stickers
 > Dear Diary ~ Save, load, or restyle yourself. | | land_diary

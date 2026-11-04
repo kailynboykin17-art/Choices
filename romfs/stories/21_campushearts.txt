@@ -1,0 +1,712 @@
+; ===== STORY 21: CAMPUS HEARTS (romance, college, all characters 18+) =====
+
+char book | Theo | 5A3622,140E10,FFFFFF,E8C050,1,1,400
+char calm | Ren | C68E62,140E10,C9A8F0,FFFFFF,0,1,380
+char artist | Jaylen | 8D5A3B,140E10,FFFFFF,E8C050,1,1,420
+char rebel | Dre | 5A3622,140E10,2B1B24,FFFFFF,0,1,360
+char sincere | Malik | 8D5A3B,140E10,FFFFFF,FFFFFF,0,1,440
+char athlete | Tre | 8D5A3B,140E10,2B1B24,E8C050,0,1,400
+char romantic | Luca | F1C9A5,4A2A1C,7FB0E0,FFFFFF,0,1,380
+
+#hearts_start
+reset
+title Campus Hearts | hearts
+bond love | your crush
+pickhero
+bg C9A8F0
+say me | Junior year at Maple Valley University. New dorm, new semester... new drama.
+text Kiara | ok so u know like SEVEN guys are lowkey obsessed w u right??
+say me | That's... not true. Right?
+text Kiara | girl. the bookworm. the hoodie boy. the artist. the biker. the sweet one. the QB. AND the italian exchange student.
+say me | Okay. Maybe it's a little true.
+
+#hearts_pick
+choice Choose your path, {name}.
+> Theo ~ The Bookworm | | hearts_book
+> Ren ~ The Calm Friend | | hearts_calm
+> Jaylen ~ The Artist | | hearts_artist
+> Dre ~ The Rebel | | hearts_rebel
+> Malik ~ The Sincere Heart | | hearts_sincere
+> Tre ~ The Athlete | | hearts_athlete
+> Luca ~ The Romantic | | hearts_romantic
+
+#hearts_book
+set love=0
+bg E9C9C6
+say me | Finals week. Third floor of the library. I swear I only closed my eyes for a second...
+say book | You fell asleep on the reference section again. You were drooling on Proust.
+say me | I was NOT. ...Was I?
+say book | Only a little. I put my jacket under your head. You looked cold.
+
+#hearts_book_s0
+choice Theo slides you his color-coded notes.
+> Study together until closing | love+2 hearts+2 | hearts_book_r00
+> Tease him about the color coding | love+1 hearts+1 | hearts_book_r01
+> Leave to go to a party | love-1 chaos+1 | hearts_book_r02
+#hearts_book_r00
+say book | Finally. Someone who can keep up with me.
+goto hearts_book_s1
+#hearts_book_r01
+say book | Mock the highlighters all you want. You'll still pass.
+goto hearts_book_s1
+#hearts_book_r02
+say book | Right. Go. I'll just... be here.
+undo
+goto hearts_book_s1
+
+#hearts_book_s1
+choice A guy from your English class asks for your number in front of Theo.
+> Politely turn him down | love+2 hearts+2 | hearts_book_r10
+> Give it to him | love+0 | hearts_book_r11
+> Ask Theo what he thinks | love+1 hearts+1 | hearts_book_r12
+#hearts_book_r10
+say book | ...You didn't have to do that. But I'm glad you did.
+goto hearts_book_s2
+#hearts_book_r11
+say book | Cool. Great. Love that for you.
+goto hearts_book_s2
+#hearts_book_r12
+say book | What I think? I think he can't spell 'necessary'.
+goto hearts_book_s2
+
+#hearts_book_s2
+choice Theo admits he kept every note you ever passed him since 3rd grade.
+> That's actually so sweet | love+2 hearts+2 | hearts_book_r20
+> Ask to see them | love+2 hearts+2 | hearts_book_r21
+> That's kind of a lot | love+0 | hearts_book_r22
+#hearts_book_r20
+say book | You're not freaked out? I was terrified to tell you.
+goto hearts_book_s3
+#hearts_book_r21
+say book | This one says 'Theo is annoying.' You drew a heart on it though.
+goto hearts_book_s3
+#hearts_book_r22
+say book | Yeah. I know. I'm working on 'a lot'.
+goto hearts_book_s3
+
+#hearts_book_s3
+choice Midnight. The library is empty. He's standing really close.
+> Kiss him between the bookshelves | love+2 hearts+2 | hearts_book_r30
+> Take his glasses off and smile | love+2 hearts+2 | hearts_book_r31
+> Say goodnight | love+0 | hearts_book_r32
+#hearts_book_r30
+say book | ...I've wanted to do that since we were eleven.
+goto hearts_book_c
+#hearts_book_r31
+say book | I can't see a thing. I don't need to.
+goto hearts_book_c
+#hearts_book_r32
+say book | Goodnight. Text me when you're home. Please.
+goto hearts_book_c
+
+#hearts_book_c
+bg A57C8A
+say me | Something's been off lately...
+say me | Theo starts texting you every hour asking where you are and who you're with.
+choice Red flag or green flag?
+> Tell him you need space to breathe | love+2 hearts+2 | hearts_book_end
+> Let him track your location | | hearts_book_redflag
+
+#hearts_book_redflag
+say book | See? You get it. It's just you and me now.
+say me | ...Wait. Where did my whole life go?
+ending ok | Red Flag | Love shouldn't cost you yourself. You walked away, and that was the right choice.
+goto storyland
+
+#hearts_book_end
+say book | You're right. I'm sorry. I want to love you better, not tighter.
+if love>=7 | hearts_book_good
+ending ok | Not Yet | Study buddies. For now.
+goto storyland
+#hearts_book_good
+bg E6D2A8
+say book | So... is this a date? Please say it's a date.
+ending good | Theo & You | Valedictorian of my heart. The screen fades to gold.
+sticker heart_book
+set hearts+5
+save
+goto storyland
+
+#hearts_calm
+set love=0
+bg E9C9C6
+say me | The power's out across campus. Ren's apartment has candles and a really big couch.
+say calm | Shh. Thunder's just noise. Here. Hoodie. It's warm.
+say me | It smells like laundry and cedarwood. Why do you always smell like that?
+say calm | Fabric softener. And because I knew you'd steal it eventually.
+
+#hearts_calm_s0
+choice Ren hands you one of his earbuds.
+> Lean on his shoulder and listen | love+2 hearts+2 | hearts_calm_r00
+> Pick the next song yourself | love+1 hearts+1 | hearts_calm_r01
+> Scroll your phone instead | love-1 chaos+1 | hearts_calm_r02
+#hearts_calm_r00
+say calm | This song's been on repeat since I met you.
+goto hearts_calm_s1
+#hearts_calm_r01
+say calm | Okay, DJ. Your taste is chaotic. I like it.
+goto hearts_calm_s1
+#hearts_calm_r02
+say calm | Oh. Okay. That's fine.
+undo
+goto hearts_calm_s1
+
+#hearts_calm_s1
+choice The thunder cracks and you flinch.
+> Grab his hand | love+2 hearts+2 | hearts_calm_r10
+> Laugh it off | love+1 hearts+1 | hearts_calm_r11
+> Say you should go home | love+0 | hearts_calm_r12
+#hearts_calm_r10
+say calm | I got you. I'm not going anywhere.
+goto hearts_calm_s2
+#hearts_calm_r11
+say calm | Tough girl. I'll hold the blanket anyway.
+goto hearts_calm_s2
+#hearts_calm_r12
+say calm | In this? Stay. I'll take the floor.
+goto hearts_calm_s2
+
+#hearts_calm_s2
+choice Ren admits he cancels plans with everyone just in case you call.
+> Tell him you love that he's there for you | love+1 hearts+1 | hearts_calm_r20
+> Tell him he deserves his own life too | love+2 hearts+2 | hearts_calm_r21
+> Joke that he's a golden retriever | love+1 hearts+1 | hearts_calm_r22
+#hearts_calm_r20
+say calm | You're the only person I'd cancel for.
+goto hearts_calm_s3
+#hearts_calm_r21
+say calm | ...Nobody's ever said that to me. Okay. I'll try.
+goto hearts_calm_s3
+#hearts_calm_r22
+say calm | Woof. I'm serious though.
+goto hearts_calm_s3
+
+#hearts_calm_s3
+choice The rain stops. The power flickers back on. He's still holding your hand.
+> Kiss him by the window | love+2 hearts+2 | hearts_calm_r30
+> Fall asleep watching movies | love+1 hearts+1 | hearts_calm_r31
+> Head home as the sun rises | love+0 | hearts_calm_r32
+#hearts_calm_r30
+say calm | ...Was that okay? Can we do it again?
+goto hearts_calm_c
+#hearts_calm_r31
+say calm | Sleep. I'll be right here.
+goto hearts_calm_c
+#hearts_calm_r32
+say calm | Text me when you're safe. Always.
+goto hearts_calm_c
+
+#hearts_calm_c
+bg A57C8A
+say me | Something's been off lately...
+say me | Ren gets quiet and sad every time you hang out with your friends instead of him.
+choice Red flag or green flag?
+> Invite him along and keep your friends | love+2 hearts+2 | hearts_calm_end
+> Stop seeing your friends for him | | hearts_calm_redflag
+
+#hearts_calm_redflag
+say calm | See? You get it. It's just you and me now.
+say me | ...Wait. Where did my whole life go?
+ending ok | Red Flag | Love shouldn't cost you yourself. You walked away, and that was the right choice.
+goto storyland
+
+#hearts_calm_end
+say calm | You're right. I'm sorry. I want to love you better, not tighter.
+if love>=7 | hearts_calm_good
+ending ok | Not Yet | Best friends who share earbuds. Still.
+goto storyland
+#hearts_calm_good
+bg E6D2A8
+say calm | So... is this a date? Please say it's a date.
+ending good | Ren & You | Your safe place turned out to be a person. The screen fades to gold.
+sticker heart_calm
+set hearts+5
+save
+goto storyland
+
+#hearts_artist
+set love=0
+bg E9C9C6
+say me | Jaylen's studio loft: vinyl spinning, paint everywhere, and sketches of... me?
+say artist | Don't freak out. You just have a really good jawline. Professionally speaking.
+say me | There are like FORTY of these.
+say artist | Forty-three. Who's counting.
+
+#hearts_artist_s0
+choice He asks you to sit for a portrait for his gallery show.
+> Say yes, wear your favorite outfit | love+2 hearts+2 | hearts_artist_r00
+> Say yes, but you pick the pose | love+2 hearts+2 | hearts_artist_r01
+> Say no, it's weird | love-1 chaos+1 | hearts_artist_r02
+#hearts_artist_r00
+say artist | Don't move. Okay, breathe. You're perfect.
+goto hearts_artist_s1
+#hearts_artist_r01
+say artist | Bossy. I respect it. Hold that.
+goto hearts_artist_s1
+#hearts_artist_r02
+say artist | Fine. I'll paint a bowl of fruit. Boring fruit.
+undo
+goto hearts_artist_s1
+
+#hearts_artist_s1
+choice He gets paint on your cheek. On purpose.
+> Paint him back | love+2 hearts+2 | hearts_artist_r10
+> Let him wipe it off | love+1 hearts+1 | hearts_artist_r11
+> Get annoyed | love+0 | hearts_artist_r12
+#hearts_artist_r10
+say artist | Oh, it's WAR. Come here.
+goto hearts_artist_s2
+#hearts_artist_r11
+say artist | Hold still... there. Missed a spot. Kidding.
+goto hearts_artist_s2
+#hearts_artist_r12
+say artist | Okay, okay! My bad.
+goto hearts_artist_s2
+
+#hearts_artist_s2
+choice At the gallery opening, a famous collector wants to buy your portrait.
+> Tell him it's his choice | love+1 hearts+1 | hearts_artist_r20
+> Ask him to keep it | love+2 hearts+2 | hearts_artist_r21
+> Tell him to sell it for the money | love+0 | hearts_artist_r22
+#hearts_artist_r20
+say artist | It's not for sale. It's the only one I'd never sell.
+goto hearts_artist_s3
+#hearts_artist_r21
+say artist | Good. 'Cause I was never letting it go anyway.
+goto hearts_artist_s3
+#hearts_artist_r22
+say artist | ...Yeah. Rent's due. Right.
+goto hearts_artist_s3
+
+#hearts_artist_s3
+choice After the show, the loft is quiet and covered in flowers.
+> Dance with him to a record | love+2 hearts+2 | hearts_artist_r30
+> Kiss him under the neon sign | love+2 hearts+2 | hearts_artist_r31
+> Help clean up and go home | love+0 | hearts_artist_r32
+#hearts_artist_r30
+say artist | This is my new favorite song. Don't ask me why.
+goto hearts_artist_c
+#hearts_artist_r31
+say artist | Finally. I ran out of ways to draw you.
+goto hearts_artist_c
+#hearts_artist_r32
+say artist | Thanks, muse. See you tomorrow?
+goto hearts_artist_c
+
+#hearts_artist_c
+bg A57C8A
+say me | Something's been off lately...
+say me | Jaylen gets jealous and says he doesn't want anyone else looking at you, even in photos.
+choice Red flag or green flag?
+> Tell him you're your own person | love+2 hearts+2 | hearts_artist_end
+> Delete all your photos for him | | hearts_artist_redflag
+
+#hearts_artist_redflag
+say artist | See? You get it. It's just you and me now.
+say me | ...Wait. Where did my whole life go?
+ending ok | Red Flag | Love shouldn't cost you yourself. You walked away, and that was the right choice.
+goto storyland
+
+#hearts_artist_end
+say artist | You're right. I'm sorry. I want to love you better, not tighter.
+if love>=7 | hearts_artist_good
+ending ok | Not Yet | His muse. His friend. Maybe someday.
+goto storyland
+#hearts_artist_good
+bg E6D2A8
+say artist | So... is this a date? Please say it's a date.
+ending good | Jaylen & You | His best work, and his favorite person. The screen fades to gold.
+sticker heart_artist
+set hearts+5
+save
+goto storyland
+
+#hearts_rebel
+set love=0
+bg E9C9C6
+say me | Dre's motorcycle broke down twelve miles out of town. And it's pouring.
+say rebel | There's an old warehouse up ahead. Stay behind me.
+say me | Why do you always say that like I'm made of glass?
+say rebel | 'Cause you kind of are. To me.
+
+#hearts_rebel_s0
+choice Dre gives you his jacket. He's soaked.
+> Make him share it | love+2 hearts+2 | hearts_rebel_r00
+> Take it and say thanks | love+1 hearts+1 | hearts_rebel_r01
+> Complain about the rain | love+0 | hearts_rebel_r02
+#hearts_rebel_r00
+say rebel | ...Fine. But only 'cause you're stubborn.
+goto hearts_rebel_s1
+#hearts_rebel_r01
+say rebel | Don't mention it. Seriously. Don't.
+goto hearts_rebel_s1
+#hearts_rebel_r02
+say rebel | Yeah, princess. I'll call the weather.
+goto hearts_rebel_s1
+
+#hearts_rebel_s1
+choice You find an old radio. Dre fixes it in two minutes.
+> Ask where he learned that | love+2 hearts+2 | hearts_rebel_r10
+> Dance to the static | love+1 hearts+1 | hearts_rebel_r11
+> Ask about his reputation | love+1 hearts+1 | hearts_rebel_r12
+#hearts_rebel_r10
+say rebel | My dad. Before he left. Nobody asks me stuff like that.
+goto hearts_rebel_s2
+#hearts_rebel_r11
+say rebel | You're insane. ...Okay, one song.
+goto hearts_rebel_s2
+#hearts_rebel_r12
+say rebel | Most of it's true. The bad parts aren't the whole story.
+goto hearts_rebel_s2
+
+#hearts_rebel_s2
+choice He says you deserve someone 'softer' and tries to push you away.
+> Tell him you choose him, rough edges and all | love+2 hearts+2 | hearts_rebel_r20
+> Tell him to stop deciding for you | love+2 hearts+2 | hearts_rebel_r21
+> Agree and pull away | love-1 chaos+1 | hearts_rebel_r22
+#hearts_rebel_r20
+say rebel | ...Say that again. Slowly.
+goto hearts_rebel_s3
+#hearts_rebel_r21
+say rebel | Okay. Okay. You're right. You're always right.
+goto hearts_rebel_s3
+#hearts_rebel_r22
+say rebel | Yeah. That's what I figured.
+undo
+goto hearts_rebel_s3
+
+#hearts_rebel_s3
+choice The rain stops. Sunrise through broken windows.
+> Kiss him in the doorway | love+2 hearts+2 | hearts_rebel_r30
+> Hold his hand on the walk back | love+1 hearts+1 | hearts_rebel_r31
+> Call a tow truck | love+0 | hearts_rebel_r32
+#hearts_rebel_r30
+say rebel | I've been scared of a lot of things. Never this.
+goto hearts_rebel_c
+#hearts_rebel_r31
+say rebel | Don't tell the guys about this. ...Okay, tell them.
+goto hearts_rebel_c
+#hearts_rebel_r32
+say rebel | Practical. Cool. I'll just stand here.
+goto hearts_rebel_c
+
+#hearts_rebel_c
+bg A57C8A
+say me | Something's been off lately...
+say me | Dre threatens a guy who bumped into you at a party.
+choice Red flag or green flag?
+> Tell him you don't want protecting like that | love+2 hearts+2 | hearts_rebel_end
+> Tell him that's kind of hot | | hearts_rebel_redflag
+
+#hearts_rebel_redflag
+say rebel | See? You get it. It's just you and me now.
+say me | ...Wait. Where did my whole life go?
+ending ok | Red Flag | Love shouldn't cost you yourself. You walked away, and that was the right choice.
+goto storyland
+
+#hearts_rebel_end
+say rebel | You're right. I'm sorry. I want to love you better, not tighter.
+if love>=7 | hearts_rebel_good
+ending ok | Not Yet | Ride or die. Just friends. For now.
+goto storyland
+#hearts_rebel_good
+bg E6D2A8
+say rebel | So... is this a date? Please say it's a date.
+ending good | Dre & You | Rough edges, soft heart. The screen fades to gold.
+sticker heart_rebel
+set hearts+5
+save
+goto storyland
+
+#hearts_sincere
+set love=0
+bg E9C9C6
+say me | Malik planned the 'perfect date.' A fancy dinner, then a classic movie.
+say sincere | I-I made a list. And a backup list. And a backup backup list.
+say me | Malik, that's three lists.
+say sincere | You deserve at least three lists.
+
+#hearts_sincere_s0
+choice The restaurant lost his reservation because of a comic convention rush.
+> Get tacos from a food truck instead | love+2 hearts+2 | hearts_sincere_r00
+> Wait it out | love+1 hearts+1 | hearts_sincere_r01
+> Get upset | love-1 chaos+1 | hearts_sincere_r02
+#hearts_sincere_r00
+say sincere | Honestly? Best tacos of my life. Because of the company.
+goto hearts_sincere_s1
+#hearts_sincere_r01
+say sincere | Two hours. You waited two hours with me. Who does that?
+goto hearts_sincere_s1
+#hearts_sincere_r02
+say sincere | I'm so sorry. I ruined it. I always ruin it.
+undo
+goto hearts_sincere_s1
+
+#hearts_sincere_s1
+choice He spills a whole milkshake on himself.
+> Laugh with him, not at him | love+2 hearts+2 | hearts_sincere_r10
+> Spill yours too so he's not alone | love+2 hearts+2 | hearts_sincere_r11
+> Hand him napkins awkwardly | love+0 | hearts_sincere_r12
+#hearts_sincere_r10
+say sincere | Your laugh is like... my favorite sound.
+goto hearts_sincere_s2
+#hearts_sincere_r11
+say sincere | You did NOT just do that. I love you. I mean— I— uh.
+goto hearts_sincere_s2
+#hearts_sincere_r12
+say sincere | Thanks... napkins. Great. Love napkins.
+goto hearts_sincere_s2
+
+#hearts_sincere_s2
+choice Someone at the convention calls him 'too nice' to fight for anything.
+> Tell them he's the bravest guy you know | love+2 hearts+2 | hearts_sincere_r20
+> Let Malik stand up for himself | love+2 hearts+2 | hearts_sincere_r21
+> Say nothing | love+0 | hearts_sincere_r22
+#hearts_sincere_r20
+say sincere | ...You mean that?
+goto hearts_sincere_s3
+#hearts_sincere_r21
+say sincere | Actually, I'd fight for her. Every day.
+goto hearts_sincere_s3
+#hearts_sincere_r22
+say sincere | It's fine. People say that a lot.
+goto hearts_sincere_s3
+
+#hearts_sincere_s3
+choice You end up on the hood of his car, counting stars.
+> Kiss him first | love+2 hearts+2 | hearts_sincere_r30
+> Ask him what's on list number four | love+1 hearts+1 | hearts_sincere_r31
+> Say it's getting late | love+0 | hearts_sincere_r32
+#hearts_sincere_r30
+say sincere | I... I had a whole speech. Forget the speech.
+goto hearts_sincere_c
+#hearts_sincere_r31
+say sincere | List four is just your name. Over and over.
+goto hearts_sincere_c
+#hearts_sincere_r32
+say sincere | Right! Yes. Driving you home. Responsibly.
+goto hearts_sincere_c
+
+#hearts_sincere_c
+bg A57C8A
+say me | Something's been off lately...
+say me | Malik says he'd give up his scholarship to transfer to your school and be near you.
+choice Red flag or green flag?
+> Tell him to keep his dreams, you'll make it work | love+2 hearts+2 | hearts_sincere_end
+> Let him give it up for you | | hearts_sincere_redflag
+
+#hearts_sincere_redflag
+say sincere | See? You get it. It's just you and me now.
+say me | ...Wait. Where did my whole life go?
+ending ok | Red Flag | Love shouldn't cost you yourself. You walked away, and that was the right choice.
+goto storyland
+
+#hearts_sincere_end
+say sincere | You're right. I'm sorry. I want to love you better, not tighter.
+if love>=7 | hearts_sincere_good
+ending ok | Not Yet | Sweet as ever. Still waiting on list four.
+goto storyland
+#hearts_sincere_good
+bg E6D2A8
+say sincere | So... is this a date? Please say it's a date.
+ending good | Malik & You | Three lists, one girl. The screen fades to gold.
+sticker heart_sincere
+set hearts+5
+save
+goto storyland
+
+#hearts_athlete
+set love=0
+bg E9C9C6
+say me | Homecoming game. Tre just scored the winning touchdown and he's pointing... at me?
+say athlete | That one was for you! You saw that, right?! Tell me you saw that!
+say me | The whole stadium saw that, Tre.
+say athlete | Good. Let 'em.
+
+#hearts_athlete_s0
+choice The team throws a victory party. Tre saves you a seat.
+> Sit with him | love+2 hearts+2 | hearts_athlete_r00
+> Hang with your friends first | love+1 hearts+1 | hearts_athlete_r01
+> Leave early | love-1 chaos+1 | hearts_athlete_r02
+#hearts_athlete_r00
+say athlete | Finally. I've been guarding this chair like it's the end zone.
+goto hearts_athlete_s1
+#hearts_athlete_r01
+say athlete | I'll be here. Patiently. Very patiently. Okay, come back.
+goto hearts_athlete_s1
+#hearts_athlete_r02
+say athlete | Wait... you're going already?
+undo
+goto hearts_athlete_s1
+
+#hearts_athlete_s1
+choice He challenges you to a free-throw contest. Loser buys pancakes.
+> Accept and win | love+2 hearts+2 | hearts_athlete_r10
+> Accept and lose on purpose | love+1 hearts+1 | hearts_athlete_r11
+> Refuse, you hate sports | love+0 | hearts_athlete_r12
+#hearts_athlete_r10
+say athlete | Nobody beats me. Nobody. ...Except you, apparently.
+goto hearts_athlete_s2
+#hearts_athlete_r11
+say athlete | You missed on purpose. I'm buying anyway.
+goto hearts_athlete_s2
+#hearts_athlete_r12
+say athlete | Hate sports?! I can fix that. I can fix this.
+goto hearts_athlete_s2
+
+#hearts_athlete_s2
+choice You find out he's failing chemistry and might lose his spot on the team.
+> Tutor him every night | love+2 hearts+2 | hearts_athlete_r20
+> Tell him to talk to his coach | love+1 hearts+1 | hearts_athlete_r21
+> Tell him it's not your problem | love-1 chaos+1 | hearts_athlete_r22
+#hearts_athlete_r20
+say athlete | B-plus! Look! I've never seen a plus before!
+goto hearts_athlete_s3
+#hearts_athlete_r21
+say athlete | Coach got me a tutor. But I like your notes better.
+goto hearts_athlete_s3
+#hearts_athlete_r22
+say athlete | ...Yeah. No. You're right.
+undo
+goto hearts_athlete_s3
+
+#hearts_athlete_s3
+choice Empty stadium at night. The field lights are still on.
+> Kiss him on the fifty-yard line | love+2 hearts+2 | hearts_athlete_r30
+> Race him to the end zone | love+1 hearts+1 | hearts_athlete_r31
+> Tell him great game | love+0 | hearts_athlete_r32
+#hearts_athlete_r30
+say athlete | Best play of my whole career. Easy.
+goto hearts_athlete_c
+#hearts_athlete_r31
+say athlete | You cheated! ...I let you cheat.
+goto hearts_athlete_c
+#hearts_athlete_r32
+say athlete | Great game. Yeah. You too. Wait, what?
+goto hearts_athlete_c
+
+#hearts_athlete_c
+bg A57C8A
+say me | Something's been off lately...
+say me | Tre wants you at every practice and gets mad when you have your own plans.
+choice Red flag or green flag?
+> Tell him you'll cheer at games, not every practice | love+2 hearts+2 | hearts_athlete_end
+> Skip your own stuff for his practices | | hearts_athlete_redflag
+
+#hearts_athlete_redflag
+say athlete | See? You get it. It's just you and me now.
+say me | ...Wait. Where did my whole life go?
+ending ok | Red Flag | Love shouldn't cost you yourself. You walked away, and that was the right choice.
+goto storyland
+
+#hearts_athlete_end
+say athlete | You're right. I'm sorry. I want to love you better, not tighter.
+if love>=7 | hearts_athlete_good
+ending ok | Not Yet | Number one fan. Just a fan. For now.
+goto storyland
+#hearts_athlete_good
+bg E6D2A8
+say athlete | So... is this a date? Please say it's a date.
+ending good | Tre & You | MVP, on and off the field. The screen fades to gold.
+sticker heart_athlete
+set hearts+5
+save
+goto storyland
+
+#hearts_romantic
+set love=0
+bg E9C9C6
+say me | Study abroad in Italy. Lemon trees, the sea, and a boy reading poetry on the terrace.
+say romantic | Scusa. You're blocking the sunset. Although... you're better than the sunset.
+say me | Does that line work on everyone?
+say romantic | I don't know. I've never used it before.
+
+#hearts_romantic_s0
+choice Luca offers to show you the 'real' city.
+> Get on the back of his scooter | love+2 hearts+2 | hearts_romantic_r00
+> Stick with your study group | love+1 hearts+1 | hearts_romantic_r01
+> Say you don't trust smooth guys | love+1 hearts+1 | hearts_romantic_r02
+#hearts_romantic_r00
+say romantic | Hold on tight. Rome is chaotic. So am I, a little.
+goto hearts_romantic_s1
+#hearts_romantic_r01
+say romantic | Then I will join your study group. I'm very studious.
+goto hearts_romantic_s1
+#hearts_romantic_r02
+say romantic | Smart. Let me earn it, then.
+goto hearts_romantic_s1
+
+#hearts_romantic_s1
+choice He takes you to a tiny restaurant where his grandmother cooks.
+> Help her make pasta | love+2 hearts+2 | hearts_romantic_r10
+> Compliment everything | love+1 hearts+1 | hearts_romantic_r11
+> Check your phone at dinner | love-1 chaos+1 | hearts_romantic_r12
+#hearts_romantic_r10
+say romantic | Nonna says you're the first girl I've brought home. She's not lying.
+goto hearts_romantic_s2
+#hearts_romantic_r11
+say romantic | She's going to adopt you. I'm serious.
+goto hearts_romantic_s2
+#hearts_romantic_r12
+say romantic | Ah. Of course. Busy.
+undo
+goto hearts_romantic_s2
+
+#hearts_romantic_s2
+choice You learn his family has arranged his future, and his marriage.
+> Tell him he gets to choose his own life | love+2 hearts+2 | hearts_romantic_r20
+> Ask what HE wants | love+2 hearts+2 | hearts_romantic_r21
+> Say it's not your business | love+0 | hearts_romantic_r22
+#hearts_romantic_r20
+say romantic | No one has ever said that to me out loud.
+goto hearts_romantic_s3
+#hearts_romantic_r21
+say romantic | What I want is standing right in front of me.
+goto hearts_romantic_s3
+#hearts_romantic_r22
+say romantic | No. I suppose it isn't.
+goto hearts_romantic_s3
+
+#hearts_romantic_s3
+choice Last night in Italy. The villa balcony. The ocean is glowing.
+> Kiss him as the sun goes down | love+2 hearts+2 | hearts_romantic_r30
+> Promise to write letters | love+1 hearts+1 | hearts_romantic_r31
+> Say goodbye | love+0 | hearts_romantic_r32
+#hearts_romantic_r30
+say romantic | I will remember this moment for the rest of my life.
+goto hearts_romantic_c
+#hearts_romantic_r31
+say romantic | Real letters. With stamps. Like it's 1950.
+goto hearts_romantic_c
+#hearts_romantic_r32
+say romantic | Arrivederci, then. Not addio. Never addio.
+goto hearts_romantic_c
+
+#hearts_romantic_c
+bg A57C8A
+say me | Something's been off lately...
+say me | Luca says he'll cut off his whole family for you, tonight, and asks you to stay in Italy forever.
+choice Red flag or green flag?
+> Tell him to fix things with his family first | love+2 hearts+2 | hearts_romantic_end
+> Drop everything and stay | | hearts_romantic_redflag
+
+#hearts_romantic_redflag
+say romantic | See? You get it. It's just you and me now.
+say me | ...Wait. Where did my whole life go?
+ending ok | Red Flag | Love shouldn't cost you yourself. You walked away, and that was the right choice.
+goto storyland
+
+#hearts_romantic_end
+say romantic | You're right. I'm sorry. I want to love you better, not tighter.
+if love>=7 | hearts_romantic_good
+ending ok | Not Yet | A summer you'll never forget.
+goto storyland
+#hearts_romantic_good
+bg E6D2A8
+say romantic | So... is this a date? Please say it's a date.
+ending good | Luca & You | A love story with an ocean view. The screen fades to gold.
+sticker heart_romantic
+set hearts+5
+save
+goto storyland
+

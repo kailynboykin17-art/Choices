@@ -951,7 +951,7 @@ static void runDiary() {
             drawText(G.myName, 178, 84, 0.7f, IVORY, 160, AL_LEFT, F_SERIF);
             snprintf(b, sizeof b, "%d hearts", V("hearts"));               drawText(b, 178, 114, 0.45f, GOLD_LT, 0, AL_LEFT, F_ITALIC);
             snprintf(b, sizeof b, "%d moments collected", (int)G.stickers.size()); drawText(b, 178, 132, 0.45f, GOLD_LT, 0, AL_LEFT, F_ITALIC);
-            snprintf(b, sizeof b, "%d of 20 stories read", (int)G.done.size()); drawText(b, 178, 150, 0.45f, GOLD_LT, 0, AL_LEFT, F_ITALIC);
+            snprintf(b, sizeof b, "%d of 21 stories read", (int)G.done.size()); drawText(b, 178, 150, 0.45f, GOLD_LT, 0, AL_LEFT, F_ITALIC);
             drawText("last saved: " + (gSavedAt.empty() ? string("never") : gSavedAt), 178, 176, 0.38f, withA(IVORY, 0xB0), 0, AL_LEFT, F_ITALIC);
             if (msgT > 0) { msgT--; drawText(msg, 200, 200, 0.42f, IVORY, 0, AL_CENTER, F_ITALIC); }
             C2D_SceneBegin(gBot);
@@ -968,12 +968,13 @@ static void runDiary() {
 }
 
 // =============== WHO ARE YOU THIS TIME? (heroine picker) ===============
-static const char* HERO_N[] = {"Mirror Selfie","On Set","Study Date","Night Out","Snow Day","Old Money"};
+static const char* HERO_N[] = {"Mirror Selfie","On Set","Study Date","Night Out","Snow Day","Old Money","Kailyn"};
 static const char* HERO_T[] = {"Main-character energy and a boyfriend in every pic.","Crossed arms, sharp eyes, zero patience for drama.",
                                "Sweet, curly, and secretly the smartest girl here.","Says exactly what everyone else is thinking.",
-                               "Pink fur, soft waves, a little mysterious.","Pearls, slick pony, quiet luxury."};
+                               "Pink fur, soft waves, a little mysterious.","Pearls, slick pony, quiet luxury.",
+                               "The main character. Phone in hand, heart on her sleeve."};
 static void runHeroPick() {
-    int sel = G.hero < 0 ? 6 : G.hero; const int N = 7;
+    const int HN = 7, N = HN + 1; int sel = G.hero < 0 ? HN : G.hero;
     while (aptMainLoop()) {
         pollInput();
         if (kDown & KEY_DOWN) sel = (sel + 1) % N;
@@ -981,12 +982,12 @@ static void runHeroPick() {
         if (kDown & KEY_RIGHT) sel = (sel + 1) % N;
         if (kDown & KEY_LEFT) sel = (sel + N - 1) % N;
         int pick = -1;
-        for (int i = 0; i < N; i++) { float x = 16 + (i % 2) * 148, y = 32 + (i / 2) * 44; float w = i == 6 ? 288 : 140;
-            if (tapIn(x, y, w, 38)) { if (sel == i) pick = i; sel = i; } }
+        for (int i = 0; i < N; i++) { float x = i == HN ? 16 : 16 + (i % 2) * 148, y = 30 + (i == HN ? (HN + 1) / 2 : i / 2) * 38; float w = i == HN ? 288 : 140;
+            if (tapIn(x, y, w, 33)) { if (sel == i) pick = i; sel = i; } }
         if (kDown & KEY_A) pick = sel;
-        if (pick >= 0) { G.hero = pick == 6 ? -1 : pick; saveGame(); return; }
+        if (pick >= 0) { G.hero = pick == HN ? -1 : pick; saveGame(); return; }
         gFrame++;
-        int was = G.hero; G.hero = sel == 6 ? -1 : sel;   // preview
+        int was = G.hero; G.hero = sel == HN ? -1 : sel;   // preview
         beginFrame();
         C2D_SceneBegin(gTop);
         drawSunset(400, 240, gBg);
@@ -994,17 +995,17 @@ static void runHeroPick() {
         kicker("Cast Your Lead", 28, 30, GOLD);
         drawText(gStoryTitle.empty() ? "Who are you?" : gStoryTitle, 28, 42, 0.7f, COCOA, 186, AL_LEFT, F_SERIF);
         goldRule(28, 72, 180);
-        drawText(sel == 6 ? "Your Style File Look" : HERO_N[sel], 28, 84, 0.72f, PLUM, 186, AL_LEFT, F_SERIF);
-        drawText(sel == 6 ? "The girl you designed, in whatever you're wearing." : HERO_T[sel], 28, 114, 0.46f, INK, 186, AL_LEFT, F_ITALIC);
+        drawText(sel == HN ? "Your Style File Look" : HERO_N[sel], 28, 84, 0.72f, PLUM, 186, AL_LEFT, F_SERIF);
+        drawText(sel == HN ? "The girl you designed, in whatever you're wearing." : HERO_T[sel], 28, 114, 0.46f, INK, 186, AL_LEFT, F_ITALIC);
         drawText("starring " + G.myName, 28, 196, 0.45f, MAUVE, 0, AL_LEFT, F_ITALIC);
-        drawPolaroid(240, 16, 148, 196, G.me, sel == 6 ? G.myName : HERO_N[sel], 0, false, gBg, "me");
+        drawPolaroid(240, 16, 148, 196, G.me, sel == HN ? G.myName : HERO_N[sel], 0, false, gBg, "me");
         G.hero = was;
         C2D_SceneBegin(gBot);
         rect(0, 0, 320, 240, IVORY, 0.1f);
         kicker("Who Are You This Time?", 160, 10, GOLD, AL_CENTER);
         for (int i = 0; i < N; i++) {
-            float x = 16 + (i % 2) * 148, y = 32 + (i / 2) * 44, w = i == 6 ? 288 : 140;
-            drawButton(x, y, w, 38, i == 6 ? "My Style File Look" : HERO_N[i], i == sel);
+            float x = i == HN ? 16 : 16 + (i % 2) * 148, y = 30 + (i == HN ? (HN + 1) / 2 : i / 2) * 38; float w = i == HN ? 288 : 140;
+            drawButton(x, y, w, 33, i == HN ? "My Style File Look" : HERO_N[i], i == sel);
         }
         C3D_FrameEnd(0);
     }
