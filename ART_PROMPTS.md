@@ -21,7 +21,7 @@ Head-and-shoulders portrait of Mrs. Bell, a character in the teen drama story "N
 
 **Lulu Bell** → `lulu.png`
 ```
-Head-and-shoulders portrait of Lulu Bell, a character in the teen drama story "Nanny Diaries": fair skin, honey blonde hair styled high ponytail or buns, Y2K fashion (choose from baby tee, velour tracksuit, silk cami, cropped blazer, gold hoops, pearls), expressive face that fits the role. Personality from her/his first line: "Are you gonna be boring like the last nanny? She cried." Modern comic-book cover illustration with the polish of a glossy 2004 fashion editorial. Realistic proportions, expressive almond eyes with detailed lashes and catchlights, glossy detailed lips, defined brows, painted hair with individual strands and warm highlights, confident ink linework with painterly rendering, cinematic golden-hour lighting. Palette: dusty rose, mauve, cream, warm ivory, cocoa, soft plum, champagne gold. No chibi, no flat vector, no anime-sprite style.
+Head-and-shoulders portrait of Lulu Bell, a spoiled but secretly lonely little girl in a pink party dress. Warm storybook-style comic illustration of a young child, age-appropriate clothes, natural kid expression, soft ink linework with painterly shading, golden-hour light. Palette: dusty rose, mauve, cream, cocoa, champagne gold. No makeup, no fashion styling.
 ```
 
 **Mr. Rivera** → `rivera.png`
@@ -31,7 +31,7 @@ Head-and-shoulders portrait of Mr. Rivera, a character in the teen drama story "
 
 **The Triplets** → `trip.png`
 ```
-Head-and-shoulders portrait of The Triplets, a character in the teen drama story "Nanny Diaries": tan skin, dark brown hair styled high ponytail or buns, Y2K fashion (choose from baby tee, velour tracksuit, silk cami, cropped blazer, gold hoops, pearls), expressive face that fits the role. Personality from her/his first line: "NANNY! NANNY! NANNY!" Modern comic-book cover illustration with the polish of a glossy 2004 fashion editorial. Realistic proportions, expressive almond eyes with detailed lashes and catchlights, glossy detailed lips, defined brows, painted hair with individual strands and warm highlights, confident ink linework with painterly rendering, cinematic golden-hour lighting. Palette: dusty rose, mauve, cream, warm ivory, cocoa, soft plum, champagne gold. No chibi, no flat vector, no anime-sprite style.
+Head-and-shoulders portrait of three young triplets (two boys, one girl) piled together, wild and giggly, in matching puffer jackets. Warm storybook-style comic illustration of a young child, age-appropriate clothes, natural kid expression, soft ink linework with painterly shading, golden-hour light. Palette: dusty rose, mauve, cream, cocoa, champagne gold. No makeup, no fashion styling.
 ```
 
 **Mr. Okafor** → `okafor.png`
@@ -41,7 +41,7 @@ Head-and-shoulders portrait of Mr. Okafor, a character in the teen drama story "
 
 **Zuri** → `zuri.png`
 ```
-Head-and-shoulders portrait of Zuri, a character in the teen drama story "Nanny Diaries": deep brown skin, jet black hair styled high ponytail or buns, thin gold-rimmed glasses, Y2K fashion (choose from baby tee, velour tracksuit, silk cami, cropped blazer, gold hoops, pearls), expressive face that fits the role. Personality from her/his first line: "I'm making a fashion magazine. You're gonna be in it." Modern comic-book cover illustration with the polish of a glossy 2004 fashion editorial. Realistic proportions, expressive almond eyes with detailed lashes and catchlights, glossy detailed lips, defined brows, painted hair with individual strands and warm highlights, confident ink linework with painterly rendering, cinematic golden-hour lighting. Palette: dusty rose, mauve, cream, warm ivory, cocoa, soft plum, champagne gold. No chibi, no flat vector, no anime-sprite style.
+Head-and-shoulders portrait of Zuri, a creative little girl making a homemade fashion magazine, with a crayon behind her ear. Warm storybook-style comic illustration of a young child, age-appropriate clothes, natural kid expression, soft ink linework with painterly shading, golden-hour light. Palette: dusty rose, mauve, cream, cocoa, champagne gold. No makeup, no fashion styling.
 ```
 
 **Tiffani** → `tiff.png`
@@ -403,7 +403,7 @@ Head-and-shoulders portrait of Grandma Luna, a character in the teen drama story
 
 **Midnight (cat)** → `cat.png`
 ```
-Head-and-shoulders portrait of Midnight (cat), a character in the teen drama story "Witchy Girl": deep brown skin, jet black hair styled chic bob, Y2K fashion (choose from baby tee, velour tracksuit, silk cami, cropped blazer, gold hoops, pearls), expressive face that fits the role. Personality from her/his first line: "Meow. I mean, hello. Yes, I talk. Keep up." Modern comic-book cover illustration with the polish of a glossy 2004 fashion editorial. Realistic proportions, expressive almond eyes with detailed lashes and catchlights, glossy detailed lips, defined brows, painted hair with individual strands and warm highlights, confident ink linework with painterly rendering, cinematic golden-hour lighting. Palette: dusty rose, mauve, cream, warm ivory, cocoa, soft plum, champagne gold. No chibi, no flat vector, no anime-sprite style.
+Portrait of Midnight, a sleek black cat with golden eyes and a tiny gold collar charm, smug expression, sitting on a velvet cushion. Painterly comic-book illustration, cinematic golden-hour light, palette of plum, mauve, cocoa and champagne gold.
 ```
 
 **Hexa** → `hex.png`
