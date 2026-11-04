@@ -8,6 +8,7 @@ char detective | Det. Rose | 5A3622,140E10,9FB8F5,FFFFFF,0,1,520
 reset
 title Pink Diamond Heist | heist
 bond heist | the crew
+pickhero
 bg 2B1B24
 say me | I'm a cat burglar in a pink catsuit. Tonight's target: the Pink Star diamond.
 say pixel | I hacked the cameras. You have 90 seconds, babe.

@@ -8,6 +8,7 @@ char karen | Angry Customer | F1C9A5,E9C96B,9FB8F5,FFFFFF,0,1,640
 reset
 title Mall Job | mall
 bond mall | the boss
+pickhero
 bg FFB3D9
 say me | My first job! At Glitter Galaxy, the most Y2K store in the mall.
 say boss | Rule one: fold the tees. Rule two: smile. Rule three: NO free body glitter.

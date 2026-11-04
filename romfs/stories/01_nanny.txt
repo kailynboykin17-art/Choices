@@ -12,6 +12,7 @@ char tiff     | Tiffani      | F1C9A5,E9C96B,D9A86C,E86A9E,0,0,720
 reset
 title Nanny Diaries | nanny
 bond trust | the kids
+pickhero
 bg F7B8D2
 say agency | Welcome to Glitter & Grace Nanny Agency, {name}! I'm Ms. Dolly.
 say agency | Every good choice earns you Hearts. Spend them in Bijou's Hearts Shop on cute stuff or second chances!

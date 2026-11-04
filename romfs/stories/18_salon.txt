@@ -8,6 +8,7 @@ char rival2 | Glamazon Salon | F1C9A5,E86A9E,2B1B24,FFFFFF,0,0,700
 reset
 title Beauty Salon Boss | salon
 bond salon | the block
+pickhero
 bg FFC8DC
 say me | I just opened my own salon! Pink chairs, glitter floors, my name on the door.
 say auntie | I'll help you, baby. Fifty years of doing hair in this neighborhood.

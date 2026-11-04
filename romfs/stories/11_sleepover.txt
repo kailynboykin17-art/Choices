@@ -8,6 +8,7 @@ char gabby | Gabby | C68E62,4A2A1C,9FD89A,FFFFFF,1,1,880
 reset
 title Sleepover Secrets | sleep
 bond sleep | the girls
+pickhero
 bg C9A8F0
 say me | Sleepover at my house! Pizza, face masks, and probably drama.
 say mya | Okay. Truth or dare. Everybody. No chickening out.

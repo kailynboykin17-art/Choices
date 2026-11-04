@@ -8,6 +8,7 @@ char dj | DJ Remi | 8D5A3B,140E10,7FB0E0,FFFFFF,1,1,460
 reset
 title Pop Star Dreams | pop
 bond pop | the charts
+pickhero
 bg C9A8F0
 say me | I posted one song online and now it has a million views?!
 say manager | Kid, I'm Max. I can make you the next big thing. Sign here!

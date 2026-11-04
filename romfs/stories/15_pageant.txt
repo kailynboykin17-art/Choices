@@ -8,6 +8,7 @@ char caroline | Caroline | F1C9A5,E9C96B,FFFFFF,E8C050,0,0,880
 reset
 title Small-Town Pageant | pageant
 bond pageant | the judges
+pickhero
 bg FFE6F2
 say me | Miss Peach Blossom Pageant. My mom entered me. I didn't even know.
 say mama | Sugar, smile with ALL your teeth!

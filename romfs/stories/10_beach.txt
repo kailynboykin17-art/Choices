@@ -8,6 +8,7 @@ char coco | Coco | 8D5A3B,140E10,FFE066,FF7EB3,0,2,960
 reset
 title Summer at Grandma's | beach
 bond beach | the town
+pickhero
 bg 9FE0F0
 say me | A whole summer in Grandma's tiny beach town. No mall. No wifi. Help.
 say grandma | Baby, you're gonna love it. The ice cream shop needs summer help!

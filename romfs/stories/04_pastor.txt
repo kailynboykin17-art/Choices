@@ -9,6 +9,7 @@ char kiara | Kiara | 8D5A3B,4A2A1C,FFE066,FF7EB3,0,2,900
 reset
 title Pastor's Daughter | pastor
 bond pastor | the church
+pickhero
 bg FFF4E0
 say me | Being the pastor's daughter means EVERYONE is watching. Everyone.
 say firstlady | Baby, wear your Sunday best. The whole church will see you sing the solo.

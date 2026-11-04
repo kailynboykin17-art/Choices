@@ -10,6 +10,7 @@ char maddie | Maddie     | F1C9A5,4A2A1C,FFE066,9FD89A,1,1,880
 reset
 title 2000s Teen Queen | teen
 bond pop | popularity
+pickhero
 bg C9A8F0
 say me | It's 2004, I'm 16, and this is MY year. Probably.
 text Jade | GIRL wake up!!! 1st day of junior yr!! wat r u wearing??

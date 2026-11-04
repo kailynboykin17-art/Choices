@@ -8,6 +8,7 @@ char skate | Skater Sam | F1C9A5,4A2A1C,7FB0E0,FFFFFF,0,1,460
 reset
 title Roller Rink Royalty | rink
 bond rink | the rink
+pickhero
 bg 8EE0C8
 say me | Friday night at the Starlight Roller Rink. Disco ball spinning.
 say roxy | The rink's closing unless we win the Skate-Off. You in?

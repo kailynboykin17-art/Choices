@@ -337,6 +337,7 @@ struct Game {
     Look me;
     string myName = "You";
     vector<string> owned;
+    int hero = -1;          // -1 = my Style File look, 0-5 = illustrated heroine
 };
 static Game G;
 static const char* SAVE_DIR  = "sdmc:/3ds/NannyDiaries";          // kept: old saves still load
@@ -352,6 +353,7 @@ static void saveGame() {
     fprintf(f, "wardrobe %d %d %d\n", G.me.outfit, G.me.hoops ? 1 : 0, V("redo"));
     string nm = G.myName; for (auto& c : nm) if (c == ' ') c = '_';
     fprintf(f, "name %s\n", nm.c_str());
+    fprintf(f, "hero %d\n", G.hero);
     for (auto& s : G.stickers) fprintf(f, "sticker %s\n", s.c_str());
     for (auto& s : G.done)     fprintf(f, "done %s\n", s.c_str());
     for (auto& o : G.owned)    fprintf(f, "own %s\n", o.c_str());
@@ -369,6 +371,7 @@ static bool loadGame() {
         else if (k == "wardrobe") { int o, h, r; in >> o >> h >> r; G.me.outfit = o; G.me.hoops = h; V("redo") = r;
                                     G.me.shirt = OUTFIT_C[o % 6]; }
         else if (k == "name") { in >> G.myName; for (auto& c : G.myName) if (c == '_') c = ' '; }
+        else if (k == "hero") in >> G.hero;
         else if (k == "sticker") { string s; in >> s; G.stickers.insert(s); }
         else if (k == "done") { string s; in >> s; G.done.insert(s); }
         else if (k == "own") { string s; in >> s; G.owned.push_back(s); }
@@ -521,7 +524,9 @@ static void drawPolaroid(float x, float y, float w, float h, const Look& L, cons
     circ(px + pw * 0.8f, py + ph * 0.75f, 18, withA(GOLD_LT, 0x50), 0.33f);
     bool art = false;
     if (!artId.empty()) {
-        if (artId == "me") art = drawArt("me_" + std::to_string(L.outfit), talk, px, py, pw, ph, 0.34f) || drawArt("me", talk, px, py, pw, ph, 0.34f);
+        if (artId == "me" && G.hero >= 0) art = drawArt("hero_" + std::to_string(G.hero), talk, px, py, pw, ph, 0.34f);
+        if (art) {}
+        else if (artId == "me") art = drawArt("me_" + std::to_string(L.outfit), talk, px, py, pw, ph, 0.34f) || drawArt("me", talk, px, py, pw, ph, 0.34f);
         else art = drawArt(artId, talk, px, py, pw, ph, 0.34f);
     }
     if (art) { vgrad(px, py + ph - 24, pw, 24, withA(COCOA, 0), withA(COCOA, 0x40), 0.35f); }   // soft cinematic vignette
@@ -962,6 +967,49 @@ static void runDiary() {
     }
 }
 
+// =============== WHO ARE YOU THIS TIME? (heroine picker) ===============
+static const char* HERO_N[] = {"Mirror Selfie","On Set","Study Date","Night Out","Snow Day","Old Money"};
+static const char* HERO_T[] = {"Main-character energy and a boyfriend in every pic.","Crossed arms, sharp eyes, zero patience for drama.",
+                               "Sweet, curly, and secretly the smartest girl here.","Says exactly what everyone else is thinking.",
+                               "Pink fur, soft waves, a little mysterious.","Pearls, slick pony, quiet luxury."};
+static void runHeroPick() {
+    int sel = G.hero < 0 ? 6 : G.hero; const int N = 7;
+    while (aptMainLoop()) {
+        pollInput();
+        if (kDown & KEY_DOWN) sel = (sel + 1) % N;
+        if (kDown & KEY_UP) sel = (sel + N - 1) % N;
+        if (kDown & KEY_RIGHT) sel = (sel + 1) % N;
+        if (kDown & KEY_LEFT) sel = (sel + N - 1) % N;
+        int pick = -1;
+        for (int i = 0; i < N; i++) { float x = 16 + (i % 2) * 148, y = 32 + (i / 2) * 44; float w = i == 6 ? 288 : 140;
+            if (tapIn(x, y, w, 38)) { if (sel == i) pick = i; sel = i; } }
+        if (kDown & KEY_A) pick = sel;
+        if (pick >= 0) { G.hero = pick == 6 ? -1 : pick; saveGame(); return; }
+        gFrame++;
+        int was = G.hero; G.hero = sel == 6 ? -1 : sel;   // preview
+        beginFrame();
+        C2D_SceneBegin(gTop);
+        drawSunset(400, 240, gBg);
+        drawPaper(14, 18, 210, 206, false, 0.3f);
+        kicker("Cast Your Lead", 28, 30, GOLD);
+        drawText(gStoryTitle.empty() ? "Who are you?" : gStoryTitle, 28, 42, 0.7f, COCOA, 186, AL_LEFT, F_SERIF);
+        goldRule(28, 72, 180);
+        drawText(sel == 6 ? "Your Style File Look" : HERO_N[sel], 28, 84, 0.72f, PLUM, 186, AL_LEFT, F_SERIF);
+        drawText(sel == 6 ? "The girl you designed, in whatever you're wearing." : HERO_T[sel], 28, 114, 0.46f, INK, 186, AL_LEFT, F_ITALIC);
+        drawText("starring " + G.myName, 28, 196, 0.45f, MAUVE, 0, AL_LEFT, F_ITALIC);
+        drawPolaroid(240, 16, 148, 196, G.me, sel == 6 ? G.myName : HERO_N[sel], 0, false, gBg, "me");
+        G.hero = was;
+        C2D_SceneBegin(gBot);
+        rect(0, 0, 320, 240, IVORY, 0.1f);
+        kicker("Who Are You This Time?", 160, 10, GOLD, AL_CENTER);
+        for (int i = 0; i < N; i++) {
+            float x = 16 + (i % 2) * 148, y = 32 + (i / 2) * 44, w = i == 6 ? 288 : 140;
+            drawButton(x, y, w, 38, i == 6 ? "My Style File Look" : HERO_N[i], i == sel);
+        }
+        C3D_FrameEnd(0);
+    }
+}
+
 // =============== SEASON FINALE (story endings) ===============
 static void runEnding(bool good, const string& title, const string& text, const string& sticker) {
     int t = 0;
@@ -1075,6 +1123,7 @@ static void runScript(const string& start) {
         else if (L.cmd == "findcat") runFindCat();
         else if (L.cmd == "save")    saveGame();
         else if (L.cmd == "diary")   runDiary();
+        else if (L.cmd == "pickhero") runHeroPick();
         else if (L.cmd == "reset")   { int h = V("hearts"), r = V("redo"); G.vars.clear();
                                        V("hearts") = h; V("redo") = r; V("happy") = 3; V("tired") = 1; V("hungry") = 2;
                                        gStoryTitle = ""; gStoryKey = ""; gBondVar = ""; gBondLabel = ""; }

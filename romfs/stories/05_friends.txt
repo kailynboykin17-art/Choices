@@ -9,6 +9,7 @@ char sophie | Sophie | F1C9A5,4A2A1C,FFFFFF,E86A9E,0,1,760
 reset
 title The Friend Group | friends
 bond friends | the girls
+pickhero
 bg F7B8D2
 say me | Me, Dani, Kelsey and Rae. Best friends since 3rd grade. Nothing can break us. Right?
 say sophie | Hi! I'm Sophie, I'm new. Can I sit with you guys?

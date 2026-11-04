@@ -8,6 +8,7 @@ char chad | Chad | F1C9A5,E9C96B,7FB0E0,FFFFFF,0,1,380
 reset
 title Fashion Intern NYC | nyc
 bond nyc | the editor
+pickhero
 bg 2B1B24
 say me | My first day interning at GLOSS magazine in New York City!!
 say miranda | Coffee. Oat milk. 140 degrees. You have 4 minutes.

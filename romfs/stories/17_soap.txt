@@ -8,6 +8,7 @@ char costar | Ricky | C68E62,140E10,FFFFFF,FFFFFF,0,1,420
 reset
 title Soap Opera Star | soap
 bond soap | the ratings
+pickhero
 bg E8C8F8
 say me | I got cast on 'Passions of Pine Valley'! My character has an evil twin. Obviously.
 say diva | I've been on this show for 20 years, darling. Don't get comfortable.

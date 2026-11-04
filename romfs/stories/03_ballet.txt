@@ -8,6 +8,7 @@ char nia | Nia | 5A3622,140E10,C9A8F0,FF7EB3,0,2,900
 reset
 title Prima Ballerina | ballet
 bond ballet | Madame
+pickhero
 bg FDE4EF
 say me | Paris Ballet Academy. One spot for the lead in Swan Lake. It's gonna be mine.
 say madame | Posture! Grace! Or go home, little swan.

@@ -8,6 +8,7 @@ char tia | Tia | 5A3622,140E10,FFE066,FF7EB3,0,2,920
 reset
 title Prom Night | prom
 bond prom | the night
+pickhero
 bg F28CB9
 say me | Prom is in one week. I have no dress and no date. Totally fine. Not panicking.
 say tia | Girl we are going as besties if no one asks. Pinky promise.

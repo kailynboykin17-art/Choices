@@ -8,6 +8,7 @@ char tasha | Tasha | 5A3622,140E10,E86A9E,FFE066,0,2,860
 reset
 title Cheer Captain | cheer
 bond cheer | the squad
+pickhero
 bg FFE066
 say me | Tryouts for cheer captain. Spirit fingers: ready.
 say coach | I need a captain who can LEAD, not just flip!

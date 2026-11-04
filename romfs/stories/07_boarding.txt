@@ -8,6 +8,7 @@ char pri | Priya | C68E62,140E10,9FD89A,FF7EB3,1,1,880
 reset
 title Boarding School | board
 bond board | the mystery
+pickhero
 bg D8F0FF
 say me | St. Clementine's Academy. Plaid skirts, old castles and secret societies. Wow.
 say ivy | You're the scholarship girl? How... quaint.

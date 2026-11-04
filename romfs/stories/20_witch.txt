@@ -8,6 +8,7 @@ char hex | Hexa | F1C9A5,140E10,2B1B24,9FD89A,0,0,760
 reset
 title Witchy Girl | witch
 bond witch | the coven
+pickhero
 bg 6A4C93
 say me | On my 16th birthday I found out... I'm a WITCH. Like, for real.
 say cat | Meow. I mean, hello. Yes, I talk. Keep up.

@@ -8,6 +8,7 @@ char prof | Professor Lin | F1C9A5,140E10,FFFFFF,FFFFFF,1,1,400
 reset
 title College Freshman | college
 bond college | Jordan
+pickhero
 bg B8D8F8
 say me | First day of college. My own dorm. My own rules. My own laundry. Wait.
 say roomie | Hey. I'm Jordan. I like silence and black nail polish. You?
