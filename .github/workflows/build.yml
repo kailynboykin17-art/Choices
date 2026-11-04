@@ -16,10 +16,15 @@ jobs:
           wget -q https://github.com/diasurgical/bannertool/releases/download/1.2.0/bannertool.zip -O bt.zip
           unzip -o bt.zip -d bt && cp bt/linux-x86_64/bannertool /usr/local/bin/ && chmod +x /usr/local/bin/bannertool
 
-      - name: Build
+      - name: Build 3DSX
+        run: make
+
+      - name: Build CIA
+        continue-on-error: true
         run: make cia
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: NannyDiaries
           path: |
