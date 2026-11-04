@@ -1,0 +1,116 @@
+title Suzy Sheep - Chapter 1: Co-Alpha
+# stats: crown (taking your spot back), self (who Suzy is without Danny)
+
+bg kitchen Sheep Apartment - Kitchen
+A note on the fridge in Mom's handwriting. Double shift. Leftovers in the blue container. Love you.
+The apartment is quiet. It's always quiet.
+You check Roarstagram. Wendy Wolf posted a bass guitar. Forty likes. One of them is Danny.
+suzy: Oh, he's LIKING her stuff now?
+choice
+> Comment something slick | slick | crown +1
+> Put the phone down. Breathe. | breathe | self +1
+endchoice
+
+label slick
+post suzy none some ppl really think playing guitar makes them deep. its giving garage band
+narr: Kylie likes it in four seconds. Peggi reposts it. Wendy doesn't respond. Somehow that's worse.
+goto school
+
+label breathe
+You put the phone face down. You turn music on, loud, and dance in the kitchen in your socks until the walls stop feeling so close.
+goto school
+
+label school
+bg hallway Roark High - Main Hallway
+show peppa left
+show rebecca_b right
+peppa: Suze. You're late. Becca's been holding your spot.
+rebecca: Happy to help!
+suzy: My spot doesn't need holding. It's MY spot.
+narr: Rebecca's been creeping closer to Peppa all year. You see it. Nobody else seems to.
+choice
+> Put Rebecca in her place | place | crown +2
+> Ignore her. You've got bigger problems. | ignore | self +1
+endchoice
+
+label place
+suzy: Becca, babe. Peppa and I were best friends before you knew how to spell your own name. Holding my spot isn't a promotion.
+rebecca: ...I was just being nice.
+peppa: Okay, okay. Claws in, ladies.
+narr: Peppa's smirking though. She loves a show. As long as she's not the one losing.
+goto danny
+
+label ignore
+You walk past both of them. Rebecca slides into your place next to Peppa without missing a beat.
+narr: You notice. You'll remember.
+goto danny
+
+label danny
+hide all
+show danny right
+narr: Then Danny walks past. He looks tired. He always looks tired now.
+narr: The rumor said he and Wendy were sneaking around. You believed it. You tried to fight her over it. Now you're not sure what you believe.
+choice
+> Ask him straight up | ask | self +2
+> Look away before he sees you | away
+> [5] Tell him you miss him | miss | self +3
+endchoice
+
+label ask
+suzy: Did anything happen with you and Wendy? Yes or no.
+danny: No. I told you that a hundred times, Suze. You just didn't want to hear it.
+narr: He doesn't say it mean. He says it tired. That's worse.
+goto counselor
+
+label away
+You turn into the girls' bathroom so fast you scare a freshman.
+goto counselor
+
+label miss
+suzy: I miss you. I'm not saying we get back together. I'm just saying it.
+danny: ...I miss you too. Every day.
+narr: Neither of you moves. The bell rings. You both stand there anyway.
+set miss 1
+goto counselor
+
+label counselor
+hide all
+bg office Roark High - Counselor's Office
+teacher: Suzy, you've been in two fights this semester. Is everything okay at home?
+choice
+> Tell the truth about how lonely it gets | truth | self +2
+> "Everything's fine." | fine | crown +1
+endchoice
+
+label truth
+suzy: My mom works all the time. My brother's... away. It's just me most nights. And when I'm alone I get loud. In my head. Then everywhere.
+teacher: Thank you for telling me that. That's a lot to carry.
+narr: Nobody's said that to you before. You didn't know you needed to hear it.
+goto ending
+
+label fine
+suzy: Everything's fine. I'm Suzy Sheep. I'm always fine.
+teacher: My door's open if that changes.
+goto ending
+
+label ending
+hide all
+bg bedroom Sheep Apartment - Suzy's Room
+if self >= 4 goto bright
+You fall asleep with the TV on so it doesn't feel so empty.
+suzy: Tomorrow I take my spot back.
+reward 5
+end
+
+label bright
+You pull out your sketchbook. You draw an outfit for nobody but yourself. Not for Peppa. Not for Danny. Just Suzy.
+suzy: Okay. That's actually really good.
+if miss >= 1 goto dtext
+reward 6
+end
+
+label dtext
+phone: Danny - "u looked good today. sorry. couldnt not say it"
+narr: You don't reply. But you don't delete it either.
+reward 7
+end

@@ -1,0 +1,127 @@
+title Gerald Kameelperd - Chapter 1: Green Flag
+# stats: game (basketball), heart (being the guy everyone can count on)
+
+bg kitchen Kameelperd House - Kitchen
+show mrsk right
+mrsk: Khululekani. Sit. Eat. You are not going to school on an empty stomach.
+gerald: Ma, I'm late. Molly's waiting at the corner.
+mrsk: Then Molly will wait for a boy who is full. She is a sensible girl. Bring her for dinner Sunday.
+show keva left
+keva: Little brother! I'm in town for a shoot. Is that the mole girl? The cute one with the glasses?
+gerald: She's not "the mole girl," Keva. She's Molly.
+keva: Ooh. Protective. I approve.
+hide all
+bg hallway Roark High - Main Hallway
+show molly left
+molly: You're late. You're also wearing two different socks.
+gerald: It's a fashion statement.
+molly: It's a laundry statement.
+narr: She fixes your collar without even thinking about it. You'd walk into traffic for this girl.
+hide molly
+show peppa right
+peppa: Gerald. Nice socks.
+gerald: Thanks, Peppa.
+peppa: You should come to Kylie's thing Saturday. Without the... entourage.
+narr: The entourage. She means Molly.
+choice
+> "Molly's not an entourage. And I'm busy Saturday." | shutdown | heart +2
+> Laugh it off | laugh | game +1
+> [5] Invite Peppa to sit with you and Molly at lunch instead | invite | heart +3
+endchoice
+
+label shutdown
+gerald: Molly's not an entourage, Peppa. And I'm busy Saturday. And Sunday. And every day, actually.
+peppa: ...Wow. Okay.
+narr: She walks off. You feel kind of bad. You also feel completely right.
+goto court
+
+label laugh
+gerald: Haha. Yeah, maybe.
+narr: Maybe. You hear yourself say it. Down the hall, Molly heard it too.
+set maybe 1
+goto court
+
+label invite
+gerald: Come sit with us at lunch. Me and Molly. You'd like her if you actually talked to her.
+peppa: I- what? No.
+narr: But she looks at you a second too long. Like nobody's ever offered her a seat without wanting something.
+set invite 1
+goto court
+
+label court
+hide all
+bg gym Roark High - Basketball Court
+Scouts are coming Friday. And standing courtside, in a blazer, is a fox from the Aristocanine Institute.
+show freddy right
+freddy: So this is the public school court. Charming.
+gerald: You lost, boarding school?
+freddy: Friendly game next month. Our school versus yours.
+choice
+> Challenge him to one-on-one right now | oneonone | game +2
+> Laugh it off | laugh2 | heart +1
+endchoice
+
+label oneonone
+narr: He takes the blazer off. He's good. Really good. But you're taller. You win by two.
+freddy: ...Rematch next month. Bring your whole team.
+goto lunch
+
+label laugh2
+gerald: Sure, bro. We'll be here.
+narr: Your teammates spend the rest of practice doing his accent. Badly.
+goto lunch
+
+label lunch
+hide all
+bg cafeteria Roark High - Cafeteria
+show pedro left
+show danny right
+gerald: Breakup Recovery Club, session three. I have a whiteboard.
+danny: You have a girlfriend. Why are you running this club?
+gerald: Because I have a girlfriend. I have wisdom. I'm a green flag, Danny. Learn from me.
+pedro: He made a slideshow last week.
+choice
+> Actually check on Pedro | pedro | heart +2
+> Keep the bit going | bit | game +1
+endchoice
+
+label pedro
+gerald: Real talk. Pedro. How are you, actually?
+pedro: Better. Football's helping. Simon's training me every morning. And you guys... you guys are helping.
+narr: Danny looks at you like you finally did something right.
+goto ending
+
+label bit
+gerald: Step four. Hit the gym. Step five. Become very tall.
+danny: That's not advice, that's just you.
+goto ending
+
+label ending
+hide all
+bg bedroom Kameelperd House - Gerald's Room
+if maybe >= 1 goto maybe
+if heart >= 4 goto good
+gerald: Friday. Scouts. Focus.
+reward 5
+end
+
+label maybe
+phone: Molly - "maybe??? u said MAYBE to kylie's party??"
+gerald: Oh no. Oh no no no.
+narr: You call her. It takes twenty minutes and one very sincere voice memo. She forgives you. Mostly.
+reward 5
+end
+
+label good
+mrsk: Your light is still on.
+gerald: Can't sleep, Ma. Thinking.
+mrsk: Your father says big hearts need big rest. Sleep.
+if invite >= 1 goto invitetext
+reward 6
+end
+
+label invitetext
+phone: Molly - "peppa pig just asked me where i got my cardigan. in a normal voice. what did u DO"
+gerald: I offered her a seat.
+reward 7
+end

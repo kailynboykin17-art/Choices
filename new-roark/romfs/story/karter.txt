@@ -1,0 +1,123 @@
+title Karter Kangaroo - Chapter 1: Both Accents
+# stats: nerve, family
+
+bg kitchen Kangaroo House - Kitchen
+show katrina right
+katrina: Karty! Big news. Aunt Karri's flying in from Sydney next week. With the cousins!
+karter: All of them?
+katrina: All five. They're staying here. Isn't it ripper?
+narr: Mum's been saying ripper more since the emails started. She's happy. You haven't seen her this happy since she passed her real estate exam.
+choice
+> Get excited with her | excited | family +2
+> Ask where five cousins are gonna sleep | sleep
+endchoice
+
+label excited
+karter: That's actually awesome, Mum. Mom. Mum.
+katrina: Say it however you want, baby. It's all yours.
+goto dadphoto
+
+label sleep
+karter: Where are five cousins going to sleep?
+katrina: Floor! Couch! Bathtub! Your dad would've loved this chaos.
+goto dadphoto
+
+label dadphoto
+There's a photo on the fridge. Dad holding you as a baby, in a hospital chair. He looks tired and so, so proud.
+katrina: Karri says you've got his ears.
+karter: We're kangaroos, Mum. Everyone has those ears.
+katrina: His specifically. Trust me.
+hide all
+bg hallway Roark High - Main Hallway
+show molly right
+narr: Molly. Your oldest friend. Since diapers, technically. Your mums basically raised you in the same living room.
+molly: Karter! Gerald says you're coming to his game Friday. Bring a sign. Make it big. He's sensitive.
+karter: Your boyfriend is seven feet tall and he needs a sign?
+molly: He needs ALL the signs.
+choice
+> Promise the biggest sign in history | sign | nerve +2
+> Tease her about being in love | tease | family +1
+endchoice
+
+label sign
+karter: Biggest sign in history. Glitter. Lights. Possibly a small fireworks permit.
+molly: This is why you're my favorite person who isn't Gerald.
+goto lunch
+
+label tease
+karter: You're so in love it's disgusting.
+molly: I KNOW. Isn't it great?
+narr: She's glowing. Since you were five, she's been the girl who hid in the bookstore. Now look at her.
+goto lunch
+
+label lunch
+hide all
+bg cafeteria Roark High - Cafeteria
+show candy left
+candy: Kangaroo.
+karter: Cat.
+candy: Molly says your dad's dead. Sorry. That came out blunt. I'm working on it in therapy.
+choice
+> Tell her about him | tell | family +1
+> "It's fine. I was a baby. I don't remember him." | brush
+endchoice
+
+label tell
+karter: He was dying the whole time Mum knew him. He spent his last months on a bucket list. Skydiving. Croc stuff.
+karter: Mum says I was the last thing on the list. The best thing.
+candy: ...That's the most beautiful thing I've ever heard.
+narr: Candy Cat, who fought two people at a mall this year, wipes her eyes with her sleeve.
+goto night
+
+label brush
+karter: It's fine. I was a baby.
+candy: That's not what I asked.
+narr: She's right. You don't have an answer for that.
+goto night
+
+label night
+hide all
+bg bedroom Kangaroo House - Karter's Room
+An email from Aunt Karri. Attached, a scan of a notebook page. Your dad's handwriting.
+narr: Karri found his old bucket list in a box. Some things are crossed off. Some aren't.
+choice
+> Read the list | read | nerve +1
+> Save it for when they arrive | save | family +1
+> [5] Read it out loud to Mum | mum | family +3
+endchoice
+
+label read
+Skydive - crossed out. Wrestle a croc - crossed out. See New York - crossed out. At the very bottom, not crossed out.
+narr: Teach my kid to surf.
+karter: ...Guess that one's mine now.
+goto ending
+
+label save
+You close the laptop. Some things are better read with family in the room.
+goto ending
+
+label mum
+You find her on the couch and read the whole list out loud. She laughs at the croc one. She cries at the last one.
+katrina: Teach my kid to surf. Oh, Ki.
+karter: The cousins can teach me. In Australia. This summer.
+katrina: ...Yeah. Yeah, they can.
+set surf 1
+goto ending
+
+label ending
+if nerve >= 3 goto brave
+You fall asleep thinking about five cousins and one bathtub.
+reward 5
+end
+
+label brave
+You look at the fridge photo one more time on your way to bed.
+karter: Bucket list item one. Don't be scared. You'd have liked that, right?
+if family >= 3 goto full
+reward 6
+end
+
+label full
+narr: Somewhere downstairs, Mum is singing while she makes up the couch. Off-key. Loud. Perfect.
+reward 7
+end

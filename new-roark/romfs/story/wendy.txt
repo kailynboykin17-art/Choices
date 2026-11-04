@@ -1,0 +1,177 @@
+title Wendy Wolf - Chapter 1: Static
+# stats: heart (letting people in), edge (staying untouchable)
+
+bg bedroom Wolf House - Wendy's Room
+Six in the morning. The laundromat downstairs is already humming, and so is your headache.
+Through the wall you can hear Watts crying, Waverly singing, and Mom answering both in Russian.
+show waverly left
+show winter right
+waverly: WENDYYY. Winter says you snore like a bear.
+winter: ...I said a big bear.
+wendy: Out. Both of you. Before I eat you.
+hide all
+show willow center
+willow: Can I borrow your eyeliner? Everyone at school says you're, like, a homewrecker now. It's kind of iconic.
+wendy: I'm not a homewrecker. Nothing happened with Danny. Nothing.
+willow: I know. But it's still iconic.
+hide all
+On your nightstand there's a postcard from Dad. Three weeks old. Same as the last one.
+show vanya center
+vanya: Vendy. Breakfast. Whitney comes tonight, so be nice, da?
+wendy: I'm always nice.
+vanya: You are nice like a cactus. Eat.
+choice
+> Ask if Dad called | askdad | heart +1
+> Grab toast and go | toast | edge +1
+endchoice
+
+label askdad
+wendy: Did Dad call? At all this week?
+vanya: Where he is, the phones are... complicated. He asked about you first. He always does.
+narr: You don't know if that's true. You decide to believe it anyway.
+goto school
+
+label toast
+wendy: Gonna be late. Bye, Mama.
+vanya: Vendy! Your jacket!
+You're already out the door.
+goto school
+
+label school
+hide all
+bg street New Roark - 5th Avenue
+Campaign posters everywhere. MAYOR HAMILTON HOG - KEEP NEW ROARK ROARING. Someone drew a mustache on half of them.
+bg hallway Roark High - Main Hallway
+Ever since the rumor, the hallway goes quiet when you walk in. You put your headphones on before anyone can try you.
+show suzy right
+show peppa center
+show rebecca left
+suzy: Oh look. The girl who can't keep her paws off other people's boyfriends.
+rebecca: Suzy, don't. She's not worth another fight.
+peppa: Let her talk, Becca. I wanna see if the wolf barks.
+choice
+> Take your headphones off and stare her down | stare | edge +2
+> Keep walking. Not worth it. | walk | heart +1
+> [5] Tell Suzy the truth, calm, in front of everyone | truth | heart +3
+endchoice
+
+label stare
+wendy: Suzy. If I wanted Danny, I'd have him. I don't. Find a new hobby.
+suzy: You-
+peppa: ...Okay, that was kinda cold. Let's go, Suze.
+goto lunch
+
+label walk
+You turn the volume up and walk past like they're a commercial.
+suzy: Yeah, keep walking!
+narr: You do. You've been doing it for months.
+goto lunch
+
+label truth
+wendy: Suzy. Nothing happened. He was helping me with a song. That's it. I swear on my little brother.
+narr: The hall goes dead quiet. Suzy's face does something complicated.
+suzy: ...Whatever.
+narr: But she doesn't say anything else. And Peppa looks at Suzy like she's doing math.
+set truth 1
+goto lunch
+
+label lunch
+hide all
+bg cafeteria Roark High - Cafeteria
+The cafeteria split down the middle after everything that happened. You sit where you always sit now.
+show candy left
+show molly right
+candy: Saw Suzy try you again. Want me to handle it?
+wendy: You already handled two people this year, Candy. Your probation officer would cry.
+candy: It wasn't probation. It was a strongly worded juvie weekend.
+molly: Can we please eat one lunch without anyone threatening violence?
+choice
+> Thank Candy for having your back | thanks | heart +1
+> Tell them you've got it handled | handled | edge +1
+endchoice
+
+label thanks
+wendy: For real though. Thanks for picking our side. You didn't have to.
+candy: Your side was the side with no snakes. Easy math.
+molly: We're a very healthy table. Gerald says so.
+goto band
+
+label handled
+wendy: I've got it. I don't need anyone fighting for me.
+candy: Nobody's fighting FOR you. We're just standing next to you. Different thing.
+goto band
+
+label band
+hide all
+bg hallway Roark High - Music Room
+show danny right
+narr: Danny. Hood up, notebook out. The reason half the school thinks you're a villain.
+danny: You still got that bass line?
+choice
+> Play it with him | play | heart +1
+> "People are watching, Danny." | careful | edge +1
+endchoice
+
+label play
+You play. He sings under his breath. It sounds good. It always sounded good. That was the whole problem.
+danny: Sorry about all the... rumor stuff.
+wendy: Not your fault people have eyes and no brains.
+set band 1
+goto night
+
+label careful
+wendy: People are watching. The last time we played together, it turned into a war.
+danny: ...Yeah. Fair.
+narr: He packs up his notebook. You hate how much you wanted to play.
+goto night
+
+label night
+hide all
+bg livingroom Wolf House - Living Room
+show whitney left
+whitney: There she is. How bad was it?
+choice
+> Tell her the truth | sister | heart +1
+> "It was fine." | fine
+endchoice
+
+label sister
+wendy: Suzy still thinks I stole her man. Candy's my bodyguard now. And Danny wants to start the band again.
+whitney: Okay, that's a story. And I'm a journalism major. Did you know Candy's mom works for a firm that does city contracts? Weird stuff around this election.
+wendy: It's high school, Whit. Not a story.
+whitney: In this city, everything's a story.
+goto ending
+
+label fine
+wendy: It was fine.
+whitney: You said fine the same way Dad says fine.
+narr: That one stings, because she's right.
+goto ending
+
+label ending
+hide all
+bg bedroom Wolf House - Wendy's Room
+if heart >= 3 goto softend
+You lie in bed listening to the city. Sirens. Trains. Somewhere, a guitar.
+wendy: Same school. Same war. Same me.
+reward 5
+end
+
+label softend
+You pick up your bass for the first time in weeks. The melody comes back like it never left.
+if truth >= 1 goto suzytext
+if band >= 1 goto bandend
+reward 6
+end
+
+label suzytext
+phone: Suzy - "if ur lying i'll end u. but... ok. maybe i overreacted."
+narr: Maybe. From Suzy Sheep, that's a peace treaty.
+reward 7
+end
+
+label bandend
+phone: Danny - "practice friday? no rumors this time. just music"
+wendy: ...Friday works.
+reward 7
+end

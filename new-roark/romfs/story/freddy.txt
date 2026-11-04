@@ -1,0 +1,121 @@
+title Freddy Fox - Chapter 1: The Others
+# stats: crown (staying top dog), curious (the world outside the Canine Quarter)
+
+bg dorm The Aristocanine Institute - Dorm Hall
+Oak floors. Portraits of purebred founders. Every frame watches you walk to breakfast.
+You've been Alpha of this school since the Dobermann left. Anything you want, you get. Dad's Caribbean food line is in every grocery store from here to Kingston.
+kid: Fox. Some of the seniors are doing the thing again. To the scholarship kid. The beagle.
+narr: The thing. Since the Canine Event, there's always a thing.
+choice
+> Go stop it | stop | curious +1
+> "Not my business." | notmine | crown +1
+endchoice
+
+label stop
+You walk into the locker room. Three seniors. One scared beagle.
+freddy: Enough. He's done. Go eat.
+narr: They look at you. They remember who you are now. They leave.
+goto dean
+
+label notmine
+freddy: Not my business.
+narr: You hear the laughing down the hall all through breakfast. You chew slower so you don't have to think.
+goto dean
+
+label dean
+hide all
+bg office The Aristocanine Institute - Dean's Office
+teacher: Mr. Fox. Valedictorian, finally. And remember, the board prefers our students keep to the Quarter. The others are... a distraction.
+freddy: The others.
+narr: You've heard that word your whole life. Don't play with the others. Don't eat with the others. You've never been told why.
+hide all
+bg street New Roark - The Canine Quarter
+phone: Fraya - "BIG BRO. im at the mall. mom thinks im at piano. come get me before 5 PLEASE"
+choice
+> Go get her | fraya | curious +1
+> Text her to get a cab | cab | crown +1
+endchoice
+
+label cab
+phone: You - "cab. now. i'll cover with mom."
+narr: You cover for her. You always cover for her. You just never go see what she's seeing.
+goto night
+
+label fraya
+bg mall New Roark Mall
+show fraya left
+fraya: You came! Look, I made friends. Real ones. Non-dogs.
+narr: A rabbit kid and a mole kid wave from the food court. Fraya's laughing harder than she ever laughs at home.
+show wendy right
+narr: And leaning against the pretzel stand, headphones around her neck, a wolf girl is watching you like you're a tourist.
+wendy: Let me guess. First time at a public mall, rich boy?
+freddy: I've been to malls.
+wendy: Malls with a food court that isn't catered?
+freddy: ...No.
+choice
+> Ask her what's good here | ask | curious +2
+> Act unbothered | cool | crown +1
+> [5] Buy pretzels for everybody. Fraya's friends too. | pretzels | curious +3
+endchoice
+
+label ask
+freddy: Okay. What's good?
+wendy: The cinnamon pretzel. The fries from the Jamaican place. Wait. You're a Fox. Is that your dad's food?
+freddy: ...Yeah.
+wendy: Then you already know it's good. Your dad's jerk sauce got my family through a whole winter.
+narr: Nobody in the Quarter has ever said anything like that about your family. Like it belongs to them too.
+set wendy 1
+goto night
+
+label cool
+freddy: I don't really do food courts.
+wendy: Sure. Enjoy your caviar, Fox.
+narr: She walks off. Fraya groans so loud people turn around.
+goto night
+
+label pretzels
+You buy pretzels for everyone. Fraya's friends. The wolf girl. A tired security guard. A stranger's grandma.
+wendy: Okay. Maybe you're not totally useless.
+freddy: Freddy. My name's Freddy.
+wendy: Wendy. Don't make it weird.
+narr: For the first time in years, nobody here knows you're the top dog. It feels like breathing.
+set wendy 1
+goto night
+
+label night
+hide all
+bg dorm The Aristocanine Institute - Freddy's Room
+A text from an unknown number.
+phone: Unknown - "The seat you're sitting in belonged to a Dobermann. Do you know why he really left?"
+choice
+> Reply - who is this | who | curious +1
+> Delete it | delete | crown +1
+endchoice
+
+label who
+phone: You - "who is this?"
+narr: No reply. You stare at the screen until it goes dark.
+goto ending
+
+label delete
+You delete it. You don't sleep anyway.
+goto ending
+
+label ending
+if curious >= 3 goto wake
+freddy: Top dog. That's all that matters.
+reward 5
+end
+
+label wake
+You think about the beagle. About Fraya laughing. About a wolf girl at the mall who looked at you like you were the strange one.
+freddy: The others. They're not so different. Why does everybody in the Quarter need us to think they are?
+if wendy >= 1 goto wendy
+reward 6
+end
+
+label wendy
+phone: Wendy - "fraya gave me ur number. she said u need friends who aren't dogs. her words."
+freddy: ...She's not wrong.
+reward 7
+end

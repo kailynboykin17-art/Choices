@@ -1,0 +1,109 @@
+title Molly Mole - Chapter 1: Bookmarked
+# stats: courage, kindness
+
+bg kitchen Mole House - Kitchen
+show mrsmole right
+show malachi left
+mrsmole: Molly, chérie, can you drop flyers at the bookstore? The center is doing free tutoring for young moms.
+molly: Already in my bag, Maman.
+malachi: Molly's gonna see GERALD after.
+molly: Malachi, I see Gerald every day. He's my boyfriend. That's how boyfriends work.
+malachi: Gross.
+narr: You push your glasses up your nose. The glasses Gerald made you go get, after he caught you squinting at the board for a whole month.
+hide all
+bg hallway Roark High - Main Hallway
+Your locker has a sticky note on it. In pink gel pen.
+narr: Heard Gerald's only with u bc he feels sorry for u. xoxo
+choice
+> Rip it down and throw it away | rip | courage +1
+> Keep it. Show Gerald. | show | kindness +1
+endchoice
+
+label rip
+You crumple it. Pink gel pen. Everybody knows whose pink gel pen that is.
+goto lunch
+
+label show
+You fold it and put it in your pocket. You'll show him. He won't laugh. He never laughs at you.
+goto lunch
+
+label lunch
+bg cafeteria Roark High - Cafeteria
+show wendy left
+show candy right
+candy: Molly, why do you look like you swallowed a cactus?
+molly: Somebody's leaving notes on my locker.
+candy: Pink pen?
+molly: ...Pink pen.
+candy: I'm gonna go talk to her.
+wendy: Candy. Sit. Down.
+choice
+> Let Candy go "talk" to Peppa | candy | courage +1
+> Stop her. Handle it yourself. | self | courage +2
+> [5] Write Peppa a note back. Nice. Way nicer than hers. | note | kindness +3
+endchoice
+
+label candy
+candy: Just talking. With my mouth. Like a lady.
+narr: She comes back four minutes later and Peppa is VERY quiet for the rest of lunch.
+goto gerald
+
+label self
+molly: No. I'll do it. I'm not a little girl who squints at the board anymore.
+narr: You walk up to Peppa's table. Your heart is going a million miles an hour.
+show peppa center
+molly: Your pen leaks. You should get a new one. And a new hobby.
+peppa: ...
+narr: Kylie actually gasps. Peggi takes a picture. You walk back to your table and Candy slow-claps.
+set stood 1
+goto gerald
+
+label note
+You write it in your nicest handwriting. You've got great taste in boyfriends. So do I. Have a good day!
+narr: You tape it to Peppa's locker. You'll never know if she read it. But she doesn't leave another note all week.
+set kind 1
+goto gerald
+
+label gerald
+hide all
+bg library Page Turners Books - Downtown
+show gerald right
+gerald: My favorite mole. In her natural habitat.
+molly: You're going to knock over the poetry section with your neck again.
+gerald: That was ONE time.
+choice
+> Tell him about the note | tellnote | courage +1
+> Don't bring it up. Today was a win. | skipnote | kindness +1
+endchoice
+
+label tellnote
+molly: Somebody said you're only with me because you feel sorry for me.
+gerald: Molly. Look at me. I'm with you because you laugh at my jokes before I finish them. Because you read the ending first. Because you're my favorite person.
+molly: ...That was a lot of reasons.
+gerald: I have more. I have a list. It's long. I'm tall, I have room.
+goto ending
+
+label skipnote
+You tell him about the bookstore and the flyers instead. He listens like it's the most important thing he's heard all day.
+goto ending
+
+label ending
+hide all
+bg bedroom Mole House - Molly's Room
+if courage >= 3 goto brave
+You fall asleep reading. Somewhere around chapter nine, the city goes quiet.
+reward 5
+end
+
+label brave
+You look at yourself in the mirror. Glasses. Messy curls. You.
+molly: Okay, Molly. You're not scared of her.
+if stood >= 1 goto viral
+reward 6
+end
+
+label viral
+post peggi none molly mole really said "get a new hobby" to peppa pig in front of the WHOLE cafeteria
+narr: Peggi meant it as a joke. It has three thousand likes by bedtime. All of them are on your side.
+reward 7
+end

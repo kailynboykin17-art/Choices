@@ -1,0 +1,143 @@
+title Danny Dobermann - Chapter 1: Broken Oaths
+# stats: trust (letting people in), shadow (the old life pulling back)
+
+bg bedroom The Pony House - Pedro's Floor
+You wake up on Pedro's floor again. Sleeping bag. Manga stacked like a pillow.
+Pedro's alarm has gone off four times. Pedro has slept through all four.
+show pedro center
+pedro: Mmf. Five more minutes.
+danny: You said that twenty minutes ago.
+show paloma left
+paloma: YEEHAW. Breakfast, cowboys.
+danny: ...Morning, sheriff.
+hide all
+show mrpony right
+mrpony: Danny. A word before school.
+narr: Mr. Pony's never liked you. He's polite about it, which is worse.
+mrpony: My son has a big test this week. I need him focused. I need this house calm. Do you understand?
+choice
+> "Yes sir. I'll stay out of the way." | polite | trust +1
+> "Got it. You want me gone." | sharp | shadow +1
+endchoice
+
+label polite
+danny: Yes sir. I'll keep it quiet. I'll help him study, even.
+mrpony: ...Thank you, Danny.
+narr: It's the first time he's said your name without sighing.
+goto walk
+
+label sharp
+danny: Got it. You want me gone. You can just say it.
+mrpony: That's not what I- Danny.
+You're already grabbing your hoodie.
+goto walk
+
+label walk
+hide all
+bg street New Roark - Near the Mall
+Your dad's building is two blocks over. You cross the street so you don't have to see it.
+A black car is parked outside Pedro's corner store. Tinted windows. It was there yesterday too.
+choice
+> Walk past it like you don't notice | pass
+> Knock on the window | knock | shadow +2
+endchoice
+
+label pass
+You keep your hands in your pockets and your eyes on the sidewalk. Old habits.
+goto school
+
+label knock
+You knock twice. The window rolls down an inch.
+narr: Nobody speaks. A card slides out. Black, with a silver seal you haven't seen since your grandfather's funeral.
+danny: Tell them I'm out.
+The window rolls up. The car doesn't leave.
+set card 1
+goto school
+
+label school
+bg hallway Roark High - Main Hallway
+show suzy right
+narr: Suzy. Of course it's Suzy. First thing. Before coffee.
+suzy: Hey.
+danny: Hey.
+narr: Months since the breakup. Since the rumor. Since she tried to swing on Wendy in the hallway. It still feels like your ribs are on backwards.
+choice
+> Tell her she looks good | good | trust +1
+> Just nod and keep moving | nod
+> [5] Give her back the hair clip she left at Pedro's | clip | trust +2
+endchoice
+
+label good
+danny: You look good, Suze.
+suzy: ...Don't do that. Don't be nice. It makes it worse.
+narr: She leaves. You stand there like an idiot for a full minute.
+goto lunch
+
+label nod
+You nod. She nods. It's the most painful nod in recorded history.
+goto lunch
+
+label clip
+You hold it out. The little silver star one.
+suzy: I thought I lost that.
+danny: You didn't lose it. You just left it somewhere.
+narr: She takes it. Her paw brushes yours. Neither of you says what that sentence was really about.
+goto lunch
+
+label lunch
+hide all
+bg cafeteria Roark High - Cafeteria
+show pedro left
+show gerald right
+gerald: Okay, gentlemen. Breakup Recovery Club, session three.
+pedro: We are not calling it that.
+gerald: Danny. Step one. Stop playing music with the girl the whole school thinks you cheated with.
+danny: Nothing happened with Wendy. I'm not taking advice from a giraffe who's been in love with the same mole since sophomore year.
+gerald: ...That's fair. That's fair, but it's also rude.
+pedro: Can we please not.
+choice
+> Apologize to Pedro | sorry | trust +1
+> Change the subject to the band | band
+endchoice
+
+label sorry
+danny: My bad. You're right, though. That rumor wrecked everything. Me and Suze. The whole table.
+pedro: It wasn't you, man. It was the rumor. And whoever started it.
+narr: Whoever started it. You've been wondering that for months.
+goto night
+
+label band
+danny: I need a bassist. And a drummer. And a name that isn't stupid.
+gerald: The Breakup Recovery Club.
+danny: I'll kill you.
+goto night
+
+label night
+hide all
+bg rooftop Pony House - Rooftop
+The city is loud even at midnight. Election billboards glow over the river.
+if card >= 1 goto cardnight
+narr: You almost feel normal up here. Almost.
+goto ending
+
+label cardnight
+You turn the black card over. On the back, one line in your grandfather's handwriting.
+narr: Blood keeps its promises, Daniel.
+danny: Not mine.
+You think about tearing it up. You put it in your pocket instead.
+goto ending
+
+label ending
+if trust >= 3 goto warm
+danny: One day at a time.
+reward 5
+end
+
+label warm
+show pedro center
+pedro: Can't sleep either?
+danny: Nah.
+pedro: My dad says you can stay through the test. He said it himself. Nobody made him.
+danny: ...Tell him thanks.
+reward 7
+end
